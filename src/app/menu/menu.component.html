@@ -1,0 +1,9 @@
+ <nav class="navbar bg-dark">
+   <ul >
+     <li class="navbar-brand" *ngFor='let menu of menuItems'>
+      <button>
+        <a title='{{menu.tooltip}}' routerLink="{{menu.href}}">{{menu.display}}</a>
+      </button>
+     </li>
+   </ul>
+ </nav>
