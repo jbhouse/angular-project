@@ -21,7 +21,13 @@ export class UserService {
 		return this.http.get(url+"Get?id="+id) as Observable<User[]>;
 	}
 	create(user: User): Observable<User[]> {
-		return this.http.post(url+"Create",user, {headers: headers}) as Observable<any>;
+		return this.http.post(url+"Create",user) as Observable<any>;
+	}
+	update(user: User): Observable<User[]> {
+		return this.http.post(url+"Update",user) as Observable<any>;
+	}
+	delete(user: User): Observable<User[]> {
+		return this.http.post(url+"Delete",user) as Observable<any>;
 	}
 
   constructor(private http: HttpClient) { }

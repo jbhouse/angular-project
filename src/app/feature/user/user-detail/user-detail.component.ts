@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute, ParamMap} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../service/user.service';
 import {User} from '../../../model/user';
 
@@ -15,7 +15,14 @@ export class UserDetailComponent implements OnInit {
 	resp: any;
 	user: User;
 
-
+	// remove() {
+	// 	this.UserSvc.remove(this.user)
+	// 		.subscribe(resp => {
+	// 			this.resp = resp;
+	// 			console.log('user-detail remove', this.resp);
+	// 			this.router.navigate(['/user/list']);
+	// 		})
+	// }
 
   constructor(private UserSvc: UserService,
   			  private router: Router,
