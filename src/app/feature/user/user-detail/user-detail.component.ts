@@ -14,15 +14,16 @@ export class UserDetailComponent implements OnInit {
 	id: string;
 	resp: any;
 	user: User;
+	myUser: User;
 
-	// remove() {
-	// 	this.UserSvc.remove(this.user)
-	// 		.subscribe(resp => {
-	// 			this.resp = resp;
-	// 			console.log('user-detail remove', this.resp);
-	// 			this.router.navigate(['/user/list']);
-	// 		})
-	// }
+	remove() {
+		this.UserSvc.delete(this.user.Id)
+			.subscribe(resp => {
+				this.resp = resp;
+				console.log('user-detail remove', this.resp);
+				this.router.navigate(['/user/list']);
+			})
+	}
 
   constructor(private UserSvc: UserService,
   			  private router: Router,
@@ -31,7 +32,10 @@ export class UserDetailComponent implements OnInit {
   ngOnInit() {
   	this.route.params.subscribe(params => this.id = params['id']);
   	this.UserSvc.get(this.id)
-  		.subscribe(users => this.user = users.length > 0 ? users[0] : null);
+  		.subscribe(users => { 
+  			this.user = users.length > 0 ? users[0] : null;
+  			console.log(Object.keys(this.user));
+  		});
   }
 
 }

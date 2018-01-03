@@ -1,3 +1,8 @@
-<p>
-  user-detail works!
-</p>
+<div class ="component-content">
+	<div class="usr-detail" *ngIf='user'>
+		<span class ='component-title'>[{{title}}]</span>
+		<span *ngIf='user'>{{user.UserName}}</span>
+		<a routerLink='/user/edit/{{user.Id}}' class="btn btn-primary">edit</a>
+		<button (click)="remove()" class="btn btn-danger">remove</button>
+	</div>
+</div>

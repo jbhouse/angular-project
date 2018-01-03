@@ -18,17 +18,16 @@ export class UserService {
 		return this.http.get(url+"List") as Observable<User[]>;
 	}
 	get(id): Observable<User[]> {
-		// return this.http.get(url+"Get?id="+id) as Observable<User[]>;
 		return this.http.get(url+id) as Observable<User[]>;
 	}
 	create(user: User): Observable<User[]> {
 		return this.http.post(url+"Create",user) as Observable<any>;
 	}
 	update(user: User): Observable<User[]> {
-		return this.http.post(url+"Update",user) as Observable<any>;
+		return this.http.put(url+user.Id,user) as Observable<any>;
 	}
-	delete(user: User): Observable<User[]> {
-		return this.http.post(url+"Delete",user) as Observable<any>;
+	delete(id: number): Observable<User[]> {
+		return this.http.delete(url+id) as Observable<any>;
 	}
 
   constructor(private http: HttpClient) { }

@@ -1,9 +1,8 @@
-import {dbClass} from '.././dbClass';
-export class User extends dbClass {
+// import {dbClass} from '.././dbClass';
+export class User {
 
   constructor(){
-    super();
-    this.ID;
+    this.Id;
     this.FirstName = '';
     this.LastName = '';
     this.UserName = '';
@@ -13,12 +12,12 @@ export class User extends dbClass {
     this.IsReviewer=false;
     this.IsAdmin=false;
     this.IsActive=false;
-    this.dateCreated = null;
+    this.DateCreated = null;
   }
 
   static sortableKeys = ['ID', 'FirstName', 'LastName', 'UserName', 'Phone', 'Email', 'Admin', 'Reviewer'];
 
-  ID:number;
+  Id:number;
   FirstName:string;
   LastName:string;
   UserName:string;
@@ -28,5 +27,7 @@ export class User extends dbClass {
   IsReviewer:boolean;
   IsAdmin:boolean;
   IsActive:boolean;
-  dateCreated:Date;
+  UpdatedByUser:number;
+  DateCreated:Date;
+  DateUpdated:Date;
 }
