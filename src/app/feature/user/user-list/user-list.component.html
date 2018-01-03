@@ -1,1 +1,49 @@
-<p *ngFor='let usr of users'>wow</p>
+<app-menu></app-menu>
+<div class ="component-content">
+	<div class =''>
+		<div class ='lefthalf'>
+			<span class ='component-title'>[{{title}}]</span>
+			<span><a routerLink ='/user/create'><img id ='createnew' width = '20' height = '20' src= '' title ="Add New"></a></span>
+		</div>
+
+	<div class='righthalf input-group'>
+		<span class =''>Sort: </span>
+		<select [(ngModel)]= 'selectedSortKey' class ='custom-select text-sm-left'>
+			<option *ngFor='let sortKey of sortKeys' value = '{{sortKey}}'>{{sortKey}}</option>
+		</select>
+		<span>Order:</span>
+			<select [(ngModel)] = 'sortDesc' class ='custom-select text-sm-left'>
+				<option value = 'asc'>Asc</option>
+				<option value='desc'>Desc</option>
+			</select>
+		</div>
+	</div>
+<p *ngIf= '!users'>loading ... </p>
+<table class = "table table-sm" *ngIf='users'>
+
+<tr>
+	<th>ID</th>
+	<th>UserName</th>
+	<th>Password</th>
+	<th>Name</th>
+	<th>PhoneNumber</th>
+	<th>Email</th>
+	<th>Priv</th>
+	<th>Actions</th>
+
+</tr> 
+	<!-- <tr *ngFor='let user of users | sort:selectedSortKey:sortDesc'> -->
+		<tr *ngFor='let user of users'>
+		<td>{{user.Id}}</td> 
+		<td>{{user.UserName}}</td>
+		<td>********</td>
+		<td>{{user.FirstName}} {{user.LastName}}</td>
+		<td>{{user.PhoneNumber}}</td>
+		<td>{{user.Email}}</td>
+		<td>{{user.Admin ? "Adm": ""}} {{user.Reviewer? "Rev": ""}} {{user.Active ? "Act": ""}}</td> <!--not served up -->
+		<td class = 'actions'>
+			<a routerLink = '/user/detail/{{user.Id}}'><img src = '' title = 'Detail'></a>
+			<a routerLink = '/user/edit/{{user.Id}}'><img src = '' title = 'Edit'></a>
+		</td>
+	</tr>
+</table>
