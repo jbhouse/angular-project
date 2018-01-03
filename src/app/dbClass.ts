@@ -3,14 +3,23 @@ export class dbClass{
   attributeTypeHash :{};
   attributeArray :any[];
 
-  populateAttributeArray():any{
-    this.attributeArray = Object.keys(this);
-  }
+  populateAttributeArray(obj: any):any{
+    this.attributeArray = Object.keys(obj);
+  };
 
-  populateAttributeTypeHash():any{
+  selectSpecificAttributes(attrs: string[]){
+    for (var i = 0; i < this.attributeArray.length; ++i) {
+      if (attrs.includes(this.attributeArray[i])) {
+        this.attributeArray.splice(i,1);
+        i--;
+      }
+    }
+  };
+
+  populateAttributeTypeHash(obj):any{
     this.attributeTypeHash = {};
     for(let k of this.attributeArray) {
-      this.attributeTypeHash[k] = typeof(this[k]);
+      this.attributeTypeHash[k] = typeof(obj[k]);
     }
   }
 

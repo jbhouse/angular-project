@@ -2,21 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../service/user.service';
 import {User} from '../../../model/user';
-import {dbClass} from ''
+import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
   styleUrls: ['./user-edit.component.css']
 })
-export class UserEditComponent implements OnInit {
+export class UserEditComponent extends dbClass implements OnInit {
 
 	title: string = 'user edit';
 	id: string;
 	resp: any;
 	user: User;
-  objKeys: any[];
-  attributeTypeHash: {};
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
 	update(){
@@ -28,26 +26,17 @@ export class UserEditComponent implements OnInit {
 	}
 
   constructor(private UserSvc: UserService,
-  			  private router: Router,
-  			  private route: ActivatedRoute) { }
+  		    	  private router: Router,
+  			      private route: ActivatedRoute) { super() }
 
   ngOnInit() {
     this.route.params.subscribe(params => this.id = params['id']);
     this.UserSvc.get(this.id)
       .subscribe(users => {
         this.user = users.length > 0 ? users[0] : null;
-        this.objKeys = Object.keys(this.user);
-        for (var i = 0; i < this.objKeys.length; ++i) {
-          if (this.nonAcceptedAttributes.includes(this.objKeys[i])) {
-            this.objKeys.splice(i,1);
-            i--;
-          }
-        }
-        this.attributeTypeHash = {};
-        for(let k of this.objKeys) {
-          this.attributeTypeHash[k] = typeof(this.user[k]);
-        }
+        this.populateAttributeArray(this.user);
+        this.selectSpecificAttributes(this.nonAcceptedAttributes);
+        this.populateAttributeTypeHash(this.user);
       });
   }
-
 }

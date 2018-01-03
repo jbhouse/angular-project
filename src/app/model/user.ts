@@ -1,4 +1,3 @@
-// import {dbClass} from '.././dbClass';
 export class User {
 
   constructor(){

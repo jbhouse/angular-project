@@ -2,7 +2,7 @@
   <span class ='component-title'>[{{title}}]</span>
   <a routerLink='/user/list' class="btn btn-primary">back to the list</a>
 	<div class="usr-edit" *ngIf='user'>
-    <div *ngFor='let key of objKeys' class="form-group row">
+    <div *ngFor='let key of attributeArray' class="form-group row">
       {{key}}
       <input *ngIf="attributeTypeHash[key] == 'string'" [(ngModel)] ="user[key]" type="text">
       <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="user[key]" type="checkbox" name="true" [checked]='true'>
