@@ -30,14 +30,14 @@
 	<th>Priv</th>
 	<th>Actions</th>
 
-</tr> 
+</tr>
 	<!-- <tr *ngFor='let user of users | sort:selectedSortKey:sortDesc'> -->
 		<tr *ngFor='let user of users'>
-		<td>{{user.Id}}</td> 
+		<td>{{user.Id}}</td>
 		<td>{{user.UserName}}</td>
 		<td>********</td>
 		<td>{{user.FirstName}} {{user.LastName}}</td>
-		<td>{{user.PhoneNumber}}</td>
+		<td>{{user.Phone}}</td>
 		<td>{{user.Email}}</td>
 		<td>{{user.Admin ? "Adm": ""}} {{user.Reviewer? "Rev": ""}} {{user.Active ? "Act": ""}}</td> <!--not served up -->
 		<td class = 'actions'>

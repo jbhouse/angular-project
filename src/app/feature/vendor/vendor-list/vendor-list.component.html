@@ -1,3 +1,57 @@
-<p>
-  vendor-list works!
-</p>
+<div class ="component-content">
+  <div class =''>
+    <div class ='lefthalf'>
+      <span class ='component-title'>[{{title}}]</span>
+      <span><a routerLink ='/vendor/create'><img id ='createnew' width = '20' height = '20' src= '' title ="Add New"></a></span>
+    </div>
+
+  <div class='righthalf input-group'>
+    <span class =''>Sort: </span>
+    <select [(ngModel)]= 'selectedSortKey' class ='custom-select text-sm-left'>
+      <option *ngFor='let sortKey of sortKeys' value = '{{sortKey}}'>{{sortKey}}</option>
+    </select>
+    <span>Order:</span>
+      <select [(ngModel)] = 'sortDesc' class ='custom-select text-sm-left'>
+        <option value = 'asc'>Asc</option>
+        <option value='desc'>Desc</option>
+      </select>
+    </div>
+  </div>
+<p *ngIf= '!vendors'>loading ... </p>
+<table class = "table table-sm" *ngIf='vendors'>
+
+<tr>
+  <th>ID</th>
+  <th>Code</th>
+  <th>Name</th>
+  <th>Address</th>
+  <th>City</th>
+  <th>State</th>
+  <th>Zip</th>
+  <th>Phone</th>
+  <th>Email</th>
+  <th>IsPreApproved</th>
+  <th>IsActive</th>
+
+</tr>
+  <!-- <tr *ngFor='let user of users | sort:selectedSortKey:sortDesc'> -->
+    <tr *ngFor='let vendor of vendors'>
+    <td>{{vendor.Id}}</td>
+    <td>{{vendor.Code}}</td>
+    <td>{{vendor.Name}}</td>
+    <td>{{vendor.Address}}</td>
+    <td>{{vendor.City}}</td>
+    <td>{{vendor.State}}</td>
+    <td>{{vendor.Zip}}</td>
+    <td>{{vendor.Phone}}</td>
+    <td>{{vendor.Email}}</td>
+    <td>{{vendor.IsPreApproved}}</td>
+    <td>{{vendor.IsActive}}</td>
+    <td>{{vendor.Admin ? "Adm": ""}} {{vendor.Reviewer? "Rev": ""}} {{vendor.Active ? "Act": ""}}</td> <!--not served up -->
+    <td class = 'actions'>
+      <a routerLink = '/vendor/detail/{{vendor.Id}}'><img src = '' title = 'Detail'></a>
+      <a routerLink = '/vendor/edit/{{vendor.Id}}'><img src = '' title = 'Edit'></a>
+    </td>
+  </tr>
+</table>
+

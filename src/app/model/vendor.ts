@@ -2,7 +2,7 @@ export class Vendor {
 
   constructor(){
     this.Id;
-    this.code = '';
+    this.Code = '';
     this.Name = '';
     this.Address = '';
     this.City = '';
@@ -20,7 +20,7 @@ export class Vendor {
   static sortableKeys = ['Id','code','Name','Address','City','State','Zip','Phone','Email','IsPreApproved','IsActive']
 
   Id:number;
-  code:string;
+  Code:string;
   Name:string;
   Address:string;
   City:string;

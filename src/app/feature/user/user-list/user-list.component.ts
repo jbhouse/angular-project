@@ -26,7 +26,6 @@ export class UserListComponent implements OnInit {
   	this.UserSvc.list()
   		.subscribe(users => {
   			this.users = users;
-  			console.log(users);
   		});
   }
 

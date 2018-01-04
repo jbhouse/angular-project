@@ -26,7 +26,7 @@ export class UserService {
 	update(user: User): Observable<User[]> {
 		return this.http.put(url+user.Id,user) as Observable<any>;
 	}
-	delete(id: number): Observable<User[]> {
+	delete(id): Observable<User[]> {
 		return this.http.delete(url+id) as Observable<any>;
 	}
 

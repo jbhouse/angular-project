@@ -1,3 +1,12 @@
-<p>
-  vendor-create works!
-</p>
+<div class ="component-content">
+  <span class ='component-title'>[{{title}}]</span>
+  <a routerLink='/vendor/list' class="btn btn-primary">back to the list</a>
+  <div class="vendor-create" *ngIf='vendor'>
+    <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
+      {{key}}
+      <input *ngIf="attributeTypeHash[key] == 'string'" [(ngModel)] ="vendor[key]" type="text">
+      <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="vendor[key]" type="checkbox" name="true" [checked]='true'>
+    </div>
+    <button (click)="create()" class="btn btn-primary">create</button>
+  </div>
+</div>

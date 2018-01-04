@@ -11,6 +11,7 @@ import {HomeComponent} from './home/home.component';
 import {AppComponent} from './app.component';
 
 import {UserService} from './service/user.service';
+import {VendorService} from './service/vendor.service';
 // import {SystemService} from './service/system.service';
 // import {LogService} from './service/log.service';
 import {SortPipe} from './util/sort-pipe';
@@ -54,7 +55,8 @@ import { VendorDetailComponent } from './feature/vendor/vendor-detail/vendor-det
     AppRoutingModule
   ],
   providers: [
-    UserService
+    UserService,
+    VendorService
   ],
   bootstrap: [AppComponent]
 })
