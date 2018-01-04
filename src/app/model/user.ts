@@ -14,7 +14,7 @@ export class User {
     this.DateCreated = null;
   }
 
-  static sortableKeys = ['ID', 'FirstName', 'LastName', 'UserName', 'Phone', 'Email', 'Admin', 'Reviewer'];
+  static sortableKeys = ['Id', 'FirstName', 'LastName', 'UserName', 'Phone', 'Email', 'Admin', 'Reviewer'];
 
   Id:number;
   FirstName:string;

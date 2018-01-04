@@ -10,9 +10,8 @@ export class MenuComponent implements OnInit {
 
   menuItems: Menu[] = [
     new Menu('HOME','/home','home menu item'),
-    new Menu('USERLIST', 'user/list', 'check users')
-    // new Menu('Vendor', '/vendor', 'check vendors'),
-    // new Menu('VendorList', '/vendorlist', 'check vendors'),
+    new Menu('User List', 'user/list', 'check users'),
+    new Menu('VendorList', '/vendor/list', 'check vendors')
     // new Menu('Product', '/product', 'check products'),
     // new Menu('ProductList', '/productlist', 'check products'),
     // new Menu('PurchaseRequest', '/purchaserequest', 'check purchaserequests'),

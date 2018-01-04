@@ -6,7 +6,7 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import {MenuComponent} from './menu/menu.component';
+import {MenuComponent} from './core/menu/menu.component';
 import {HomeComponent} from './home/home.component';
 import {AppComponent} from './app.component';
 
@@ -23,6 +23,10 @@ import { ProductCreateComponent } from './feature/product/product-create/product
 import { ProductEditComponent } from './feature/product/product-edit/product-edit.component';
 import { ProductDetailComponent } from './feature/product/product-detail/product-detail.component';
 import { ProductListComponent } from './feature/product/product-list/product-list.component';
+import { VendorListComponent } from './feature/vendor/vendor-list/vendor-list.component';
+import { VendorEditComponent } from './feature/vendor/vendor-edit/vendor-edit.component';
+import { VendorCreateComponent } from './feature/vendor/vendor-create/vendor-create.component';
+import { VendorDetailComponent } from './feature/vendor/vendor-detail/vendor-detail.component';
 
 
 @NgModule({
@@ -37,7 +41,11 @@ import { ProductListComponent } from './feature/product/product-list/product-lis
     ProductCreateComponent,
     ProductEditComponent,
     ProductDetailComponent,
-    ProductListComponent
+    ProductListComponent,
+    VendorListComponent,
+    VendorEditComponent,
+    VendorCreateComponent,
+    VendorDetailComponent
   ],
   imports: [
     BrowserModule,
