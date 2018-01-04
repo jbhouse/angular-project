@@ -3,6 +3,9 @@
 		<span class ='component-title'>[{{title}}]</span>
 		<span *ngIf='user'>{{user.UserName}}</span>
 		<a routerLink='/user/edit/{{user.Id}}' class="btn btn-primary">edit</a>
+		<div *ngFor='let key of attributeArray'>
+			<span>{{key}}: {{user[key]}}</span>
+		</div>
 		<button (click)="remove()" class="btn btn-danger">remove</button>
 	</div>
 </div>

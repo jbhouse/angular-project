@@ -11,8 +11,9 @@ const headers: HttpHeaders = new HttpHeaders({'X-Requested-With': 'XMLHttpReques
 export class UserService {
 
 	users : User[];
-	authenticate(user: User): Observable<User[]>{
-		return this.http.post(url+"Authenticate",user) as Observable<User[]>;
+
+	authenticate(username: string, password: string): Observable<User[]>{
+		return this.http.get(url+"Authenticate?uname="+username+"&pwd="+password) as Observable<User[]>;
 	}
 	list(): Observable<User[]> {
 		return this.http.get(url+"List") as Observable<User[]>;
