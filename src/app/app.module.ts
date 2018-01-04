@@ -19,6 +19,10 @@ import { UserListComponent } from './feature/user/user-list/user-list.component'
 import { UserDetailComponent } from './feature/user/user-detail/user-detail.component';
 import { UserCreateComponent } from './feature/user/user-create/user-create.component';
 import { UserEditComponent } from './feature/user/user-edit/user-edit.component';
+import { ProductCreateComponent } from './feature/product/product-create/product-create.component';
+import { ProductEditComponent } from './feature/product/product-edit/product-edit.component';
+import { ProductDetailComponent } from './feature/product/product-detail/product-detail.component';
+import { ProductListComponent } from './feature/product/product-list/product-list.component';
 
 
 @NgModule({
@@ -29,7 +33,11 @@ import { UserEditComponent } from './feature/user/user-edit/user-edit.component'
     UserListComponent,
     UserDetailComponent,
     UserCreateComponent,
-    UserEditComponent
+    UserEditComponent,
+    ProductCreateComponent,
+    ProductEditComponent,
+    ProductDetailComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
