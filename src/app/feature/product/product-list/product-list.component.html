@@ -2,7 +2,7 @@
   <div class =''>
     <div class ='lefthalf'>
       <span class ='component-title'>[{{title}}]</span>
-      <span><a routerLink ='/product/create'><img id ='createnew' width = '20' height = '20' src= '' title ="Add New"></a></span>
+      <span><a routerLink ='/product/create'><img id ='createnew' width = '20' height = '20' src= '../../../assets/add-new.png' title ="Add New"></a></span>
     </div>
 
   <div class='righthalf input-group'>
@@ -27,10 +27,13 @@
 </th>
   <!-- <tr *ngFor='let product of products | sort:selectedSortKey:sortDesc'> -->
     <tr *ngFor='let product of products'>
-    <td *ngFor='let k of attributeArray'>{{product[k]}}</td>
+    <td *ngFor='let k of attributeArray'>
+      <span *ngIf="k == 'Vendor';else not_Vendor">{{product[k].Name}}</span>
+      <ng-template #not_Vendor>{{product[k]}}</ng-template>
+    </td>
     <td class = 'actions'>
-      <a routerLink = '/product/detail/{{product.Id}}'><img src = '' title = 'Detail'></a>
-      <a routerLink = '/product/edit/{{product.Id}}'><img src = '' title = 'Edit'></a>
+      <a routerLink = '/product/detail/{{product.Id}}'><img src = '../../../assets/detail.png' title = 'Detail'></a>
+      <a routerLink = '/product/edit/{{product.Id}}'><img src = '../../../assets/edit.png' title = 'Edit'></a>
     </td>
   </tr>
 </table>

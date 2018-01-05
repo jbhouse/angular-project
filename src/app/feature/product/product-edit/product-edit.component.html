@@ -1,3 +1,17 @@
-<p>
-  product-edit works!
-</p>
+<div class ="component-content">
+  <span class ='component-title'>[{{title}}]</span>
+  <a routerLink='/product/list' class="btn btn-primary">back to the list</a>
+  <div class="product-edit" *ngIf='product'>
+    <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
+      {{key}}
+      <select *ngIf="key == 'Vendor';else not_Vendor" [(ngModel)]='product[key]'>
+        <option *ngFor="let vendor of vendors" [ngValue]="vendor">{{vendor.Name}}</option>
+      </select>
+      <ng-template #not_Vendor>
+        <input *ngIf="attributeTypeHash[key] != 'boolean'" [(ngModel)] ="product[key]" type="text">
+        <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="product[key]" type="checkbox" name="true" [checked]='true'>
+      </ng-template>
+    </div>
+    <button (click)="update()" class="btn btn-primary">update</button>
+  </div>
+</div>

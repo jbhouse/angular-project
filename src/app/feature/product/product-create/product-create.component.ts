@@ -18,7 +18,7 @@ export class ProductCreateComponent extends dbClass implements OnInit {
   resp: any;
   product: Product;
   vendors: Vendor[];
-  nonAcceptedAttributes = ['Id', 'Vendor', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
+  nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
   create(){
     this.ProdSvc.create(this.product)

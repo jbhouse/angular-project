@@ -23,7 +23,7 @@ export class Product {
     this.Vendor = new Vendor();
     this.PartNumber = '';
     this.Name = '';
-    this.Price = null;
+    this.Price = 0;
     this.Unit = '';
     this.PhotoPath = '';
   }

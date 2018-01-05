@@ -20,6 +20,7 @@ import {ProductCreateComponent} from './feature/product/product-create/product-c
 
 const routes: Routes = [
 	{path: '', redirectTo: '/', pathMatch: 'full'},
+  // {path: '', redirectTo: 'user/login', pathMatch: 'full'},
 	{path: 'home', component: HomeComponent},
 	{path: 'user/detail/:id', component: UserDetailComponent},
 	{path: 'user/edit/:id', component: UserEditComponent},

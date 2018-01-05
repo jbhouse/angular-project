@@ -15,7 +15,7 @@ import {VendorService} from './service/vendor.service';
 import {SystemService} from './service/system.service';
 import {ProductService} from './service/product.service';
 // import {LogService} from './service/log.service';
-import {SortPipe} from './util/sort-pipe';
+import {SortPipe} from './util/sortpipe';
 
 import { UserListComponent } from './feature/user/user-list/user-list.component';
 import { UserDetailComponent } from './feature/user/user-detail/user-detail.component';
@@ -64,6 +64,7 @@ import { VendorDetailComponent } from './feature/vendor/vendor-detail/vendor-det
     VendorService,
     SystemService,
     ProductService
+    // LogService
   ],
   bootstrap: [AppComponent]
 })

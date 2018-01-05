@@ -15,7 +15,6 @@ export class UserDetailComponent extends dbClass implements OnInit {
 	id: string;
 	resp: any;
 	user: User;
-	myUser: User;
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
 	remove() {
@@ -33,7 +32,7 @@ export class UserDetailComponent extends dbClass implements OnInit {
   ngOnInit() {
   	this.route.params.subscribe(params => this.id = params['id']);
   	this.UserSvc.get(this.id)
-  		.subscribe(users => { 
+  		.subscribe(users => {
   			this.user = users.length > 0 ? users[0] : null;
         this.populateAttributeArray(this.user);
         this.selectSpecificAttributes(this.nonAcceptedAttributes);
