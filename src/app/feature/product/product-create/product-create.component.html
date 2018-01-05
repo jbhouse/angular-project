@@ -1,17 +1,16 @@
 <div class ="component-content">
   <span class ='component-title'>[{{title}}]</span>
   <a routerLink='/product/list' class="btn btn-primary">back to the list</a>
-  <div>
-    <select [(ngModel)]='product.Vendor'>
-      <option *ngFor="let vendor of vendors" [ngValue]="vendor">{{vendor.Name}}</option>
-    </select>
-  </div>
   <div class="usr-create" *ngIf='product'>
     <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
       {{key}}
-      <input *ngIf="attributeTypeHash[key] == 'string'" [(ngModel)] ="product[key]" type="text">
-      <input *ngIf="attributeTypeHash[key] == 'number'" [(ngModel)] ="product[key]" type="text">
-      <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="product[key]" type="checkbox" name="true" [checked]='true'>
+      <select *ngIf="key == 'Vendor';else not_Vendor" [(ngModel)]='product[key]'>
+        <option *ngFor="let vendor of vendors" [ngValue]="vendor">{{vendor.Name}}</option>
+      </select>
+      <ng-template #not_Vendor>
+        <input *ngIf="attributeTypeHash[key] != 'boolean'" [(ngModel)] ="product[key]" type="text">
+        <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="product[key]" type="checkbox" name="true" [checked]='true'>
+      </ng-template>
     </div>
     <button (click)="create()" class="btn btn-primary">create</button>
   </div>
