@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ProductService} from '../../../service/product.service';
+import {SystemService} from '../../../service/system.service';
+// import {LogService} from '../../../service/user.service';
+import {Product} from '../../../model/product';
 
 @Component({
   selector: 'app-product-detail',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDetailComponent implements OnInit {
 
-  constructor() { }
+  title: string = 'Product List';
+  selectedSortKey: string = 'Id';
+  sortDesc: string = 'asc';
+  sortKeys: string[] = Product.sortableKeys;
+  products: Product[];
+
+  constructor(private ProdSvc: ProductService,
+              private SysSvc: SystemService
+          // private LogSvc: LogService
+          ) { }
 
   ngOnInit() {
+    this.ProdSvc.list()
+      .subscribe(products => {
+        this.products = products;
+      });
   }
-
 }

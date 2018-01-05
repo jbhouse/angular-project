@@ -20,38 +20,17 @@
 <p *ngIf= '!vendors'>loading ... </p>
 <table class = "table table-sm" *ngIf='vendors'>
 
-<tr>
-  <th>ID</th>
-  <th>Code</th>
-  <th>Name</th>
-  <th>Address</th>
-  <th>City</th>
-  <th>State</th>
-  <th>Zip</th>
-  <th>Phone</th>
-  <th>Email</th>
-  <th>IsPreApproved</th>
-  <th>IsActive</th>
-
-</tr>
-  <!-- <tr *ngFor='let user of users | sort:selectedSortKey:sortDesc'> -->
-    <tr *ngFor='let vendor of vendors'>
-    <td>{{vendor.Id}}</td>
-    <td>{{vendor.Code}}</td>
-    <td>{{vendor.Name}}</td>
-    <td>{{vendor.Address}}</td>
-    <td>{{vendor.City}}</td>
-    <td>{{vendor.State}}</td>
-    <td>{{vendor.Zip}}</td>
-    <td>{{vendor.Phone}}</td>
-    <td>{{vendor.Email}}</td>
-    <td>{{vendor.IsPreApproved}}</td>
-    <td>{{vendor.IsActive}}</td>
-    <td>{{vendor.Admin ? "Adm": ""}} {{vendor.Reviewer? "Rev": ""}} {{vendor.Active ? "Act": ""}}</td> <!--not served up -->
-    <td class = 'actions'>
-      <a routerLink = '/vendor/detail/{{vendor.Id}}'><img src = '' title = 'Detail'></a>
-      <a routerLink = '/vendor/edit/{{vendor.Id}}'><img src = '' title = 'Edit'></a>
-    </td>
+<th *ngFor='let k of attributeArray'>
+  <tr>
+    <td>{{k}}</td>
   </tr>
+</th>
+  <!-- <tr *ngFor='let vendor of vendors | sort:selectedSortKey:sortDesc'> -->
+  <tr *ngFor='let vendor of vendors'>
+  <td *ngFor='let k of attributeArray'>{{vendor[k]}}</td>
+  <td class = 'actions'>
+    <a routerLink = '/vendor/detail/{{vendor.Id}}'><img src = '' title = 'Detail'></a>
+    <a routerLink = '/vendor/edit/{{vendor.Id}}'><img src = '' title = 'Edit'></a>
+  </td>
+</tr>
 </table>
-

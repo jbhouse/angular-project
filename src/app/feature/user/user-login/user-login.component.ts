@@ -33,12 +33,9 @@ export class UserLoginComponent implements OnInit {
   }
 
   constructor(private UserSvc : UserService,
-  			  private SysSvc : SystemService,
-  			  private router : Router) { }
+          private SysSvc : SystemService,
+          private router : Router) { }
 
   ngOnInit() {
-  	}
-
-  }
-
+    }
 }

@@ -1,3 +1,36 @@
-<p>
-  product-list works!
-</p>
+<div class ="component-content">
+  <div class =''>
+    <div class ='lefthalf'>
+      <span class ='component-title'>[{{title}}]</span>
+      <span><a routerLink ='/product/create'><img id ='createnew' width = '20' height = '20' src= '' title ="Add New"></a></span>
+    </div>
+
+  <div class='righthalf input-group'>
+    <span class =''>Sort: </span>
+    <select [(ngModel)]= 'selectedSortKey' class ='custom-select text-sm-left'>
+      <option *ngFor='let sortKey of sortKeys' value = '{{sortKey}}'>{{sortKey}}</option>
+    </select>
+    <span>Order:</span>
+      <select [(ngModel)] = 'sortDesc' class ='custom-select text-sm-left'>
+        <option value = 'asc'>Asc</option>
+        <option value='desc'>Desc</option>
+      </select>
+    </div>
+  </div>
+<p *ngIf= '!products'>loading ... </p>
+<table class = "table table-sm" *ngIf='products'>
+
+<th *ngFor='let k of attributeArray'>
+  <tr>
+    <td>{{k}}</td>
+  </tr>
+</th>
+  <!-- <tr *ngFor='let product of products | sort:selectedSortKey:sortDesc'> -->
+    <tr *ngFor='let product of products'>
+    <td *ngFor='let k of attributeArray'>{{product[k]}}</td>
+    <td class = 'actions'>
+      <a routerLink = '/product/detail/{{product.Id}}'><img src = '' title = 'Detail'></a>
+      <a routerLink = '/product/edit/{{product.Id}}'><img src = '' title = 'Edit'></a>
+    </td>
+  </tr>
+</table>
