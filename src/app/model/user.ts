@@ -1,7 +1,7 @@
 export class User {
 
   constructor(){
-    this.Id;
+    this.Id = 1;
     this.FirstName = '';
     this.LastName = '';
     this.UserName = '';

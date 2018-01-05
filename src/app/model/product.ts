@@ -28,7 +28,7 @@ export class Product {
     this.PhotoPath = '';
   }
 
-  static sortableKeys = ['Id','PartNumber','Name','Price','Unit','PhotoPath'];
+  static sortableKeys = ['Id','PartNumber','Name','Price','Unit'];
 
   Id: number;
   Vendor: Vendor;

@@ -1,0 +1,40 @@
+<div class ="component-content">
+  <div class =''>
+    <div class ='lefthalf'>
+      <span class ='component-title'>[{{title}}]</span>
+      <span><a routerLink ='/purchaserequest/create'><img id ='createnew' width = '20' height = '20' src= '../../../assets/add-new.png' title ="Add New"></a></span>
+    </div>
+
+  <div class='righthalf input-group'>
+    <span class =''>Sort: </span>
+    <select [(ngModel)]= 'selectedSortKey' class ='custom-select text-sm-left'>
+      <option *ngFor='let sortKey of sortKeys' value = '{{sortKey}}'>{{sortKey}}</option>
+    </select>
+    <span>Order:</span>
+      <select [(ngModel)] = 'sortDesc' class ='custom-select text-sm-left'>
+        <option value = 'asc'>Asc</option>
+        <option value='desc'>Desc</option>
+      </select>
+    </div>
+  </div>
+<p *ngIf= '!purchaserequests'>loading ... </p>
+<table class = "table table-sm" *ngIf='purchaserequests'>
+
+<th *ngFor='let k of attributeArray'>
+  <tr>
+    <td>{{k}}</td>
+  </tr>
+</th>
+  <!-- <tr *ngFor='let purchaserequest of purchaserequests | sort:selectedSortKey:sortDesc'> -->
+    <tr *ngFor='let purchaserequest of purchaserequests'>
+    <td *ngFor='let k of attributeArray'>
+      <span *ngIf="k == 'User';else not_User">{{purchaserequest[k].UserName}}</span>
+      <ng-template #not_User><span *ngIf="k == 'Status';else not_Status">{{purchaserequest[k].Description}}</span></ng-template>
+      <ng-template #not_Status>{{purchaserequest[k]}}</ng-template>
+    </td>
+    <td class = 'actions'>
+      <a routerLink = '/purchaserequest/detail/{{purchaserequest.Id}}'><img src = '../../../assets/detail.png' title = 'Detail'></a>
+      <a routerLink = '/purchaserequest/edit/{{purchaserequest.Id}}'><img src = '../../../assets/edit.png' title = 'Edit'></a>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,17 @@
+<div class ="component-content">
+  <span class ='component-title'>[{{title}}]</span>
+  <a routerLink='/purchaserequest/list' class="btn btn-primary">back to the list</a>
+  <div class="purchaserequest-edit" *ngIf='purchaserequest'>
+    <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
+      {{key}}
+      <select *ngIf="key == 'Vendor';else not_Vendor" [(ngModel)]='purchaserequest[key]'>
+        <option *ngFor="let vendor of vendors" [ngValue]="vendor">{{vendor.Name}}</option>
+      </select>
+      <ng-template #not_Vendor>
+        <input *ngIf="attributeTypeHash[key] != 'boolean'" [(ngModel)] ="purchaserequest[key]" type="text">
+        <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="purchaserequest[key]" type="checkbox" name="true" [checked]='true'>
+      </ng-template>
+    </div>
+    <button (click)="update()" class="btn btn-primary">update</button>
+  </div>
+</div>

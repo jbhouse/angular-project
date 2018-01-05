@@ -1,7 +1,7 @@
 <div class ="component-content">
   <span class ='component-title'>[{{title}}]</span>
   <a routerLink='/product/list' class="btn btn-primary">back to the list</a>
-  <div class="usr-create" *ngIf='product'>
+  <div class="product-create" *ngIf='product'>
     <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
       {{key}}
       <select *ngIf="key == 'Vendor';else not_Vendor" [(ngModel)]='product[key]'>

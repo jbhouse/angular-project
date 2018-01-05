@@ -14,6 +14,7 @@ import {UserService} from './service/user.service';
 import {VendorService} from './service/vendor.service';
 import {SystemService} from './service/system.service';
 import {ProductService} from './service/product.service';
+import {PurchaserequestService} from './service/purchaserequest.service';
 // import {LogService} from './service/log.service';
 import {SortPipe} from './util/sortpipe';
 
@@ -32,6 +33,11 @@ import { VendorListComponent } from './feature/vendor/vendor-list/vendor-list.co
 import { VendorEditComponent } from './feature/vendor/vendor-edit/vendor-edit.component';
 import { VendorCreateComponent } from './feature/vendor/vendor-create/vendor-create.component';
 import { VendorDetailComponent } from './feature/vendor/vendor-detail/vendor-detail.component';
+//
+import { PurchaserequestDetailComponent } from './feature/purchaserequest/purchaserequest-detail/purchaserequest-detail.component';
+import { PurchaserequestCreateComponent } from './feature/purchaserequest/purchaserequest-create/purchaserequest-create.component';
+import { PurchaserequestEditComponent } from './feature/purchaserequest/purchaserequest-edit/purchaserequest-edit.component';
+import { PurchaserequestListComponent } from './feature/purchaserequest/purchaserequest-list/purchaserequest-list.component';
 
 
 @NgModule({
@@ -51,7 +57,11 @@ import { VendorDetailComponent } from './feature/vendor/vendor-detail/vendor-det
     VendorEditComponent,
     VendorCreateComponent,
     VendorDetailComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    PurchaserequestDetailComponent,
+    PurchaserequestCreateComponent,
+    PurchaserequestEditComponent,
+    PurchaserequestListComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +73,7 @@ import { VendorDetailComponent } from './feature/vendor/vendor-detail/vendor-det
     UserService,
     VendorService,
     SystemService,
+    PurchaserequestService,
     ProductService
     // LogService
   ],

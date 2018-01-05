@@ -1,0 +1,15 @@
+<div class ="component-content">
+  <div class="purchaserequest-detail" *ngIf='purchaserequest'>
+    <span class ='component-title'>[{{title}}]</span>
+    <span *ngIf='purchaserequest'>{{purchaserequest.Name}}</span>
+    <a routerLink='/purchaserequest/edit/{{purchaserequest.Id}}' class="btn btn-primary">edit</a>
+    <div *ngFor='let key of attributeArray'>
+      <span>{{key}}: {{purchaserequest[key]}}</span>
+    </div>
+    <div>
+      <p>Status: {{purchaserequest.Status.Description}}</p>
+      <p>User: {{purchaserequest.User.UserName}}</p>
+    </div>
+    <button (click)="remove()" class="btn btn-danger">remove</button>
+  </div>
+</div>

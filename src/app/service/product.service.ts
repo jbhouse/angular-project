@@ -10,8 +10,6 @@ const headers: HttpHeaders = new HttpHeaders({'X-Requested-With': 'XMLHttpReques
 @Injectable()
 export class ProductService {
 
-  products : Product[];
-
   list(): Observable<Product[]> {
     return this.http.get(url+"List") as Observable<Product[]>;
   }
