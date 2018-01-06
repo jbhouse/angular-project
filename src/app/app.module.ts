@@ -15,6 +15,7 @@ import {VendorService} from './service/vendor.service';
 import {SystemService} from './service/system.service';
 import {ProductService} from './service/product.service';
 import {PurchaserequestService} from './service/purchaserequest.service';
+import {PurchaserequestlineitemService} from './service/purchaserequestlineitem.service';
 // import {LogService} from './service/log.service';
 import {SortPipe} from './util/sortpipe';
 
@@ -38,6 +39,10 @@ import { PurchaserequestDetailComponent } from './feature/purchaserequest/purcha
 import { PurchaserequestCreateComponent } from './feature/purchaserequest/purchaserequest-create/purchaserequest-create.component';
 import { PurchaserequestEditComponent } from './feature/purchaserequest/purchaserequest-edit/purchaserequest-edit.component';
 import { PurchaserequestListComponent } from './feature/purchaserequest/purchaserequest-list/purchaserequest-list.component';
+import { PurchaserequestlineitemDetailComponent } from './feature/purchaserequestlineitem/purchaserequestlineitem-detail/purchaserequestlineitem-detail.component';
+import { PurchaserequestlineitemListComponent } from './feature/purchaserequestlineitem/purchaserequestlineitem-list/purchaserequestlineitem-list.component';
+import { PurchaserequestlineitemEditComponent } from './feature/purchaserequestlineitem/purchaserequestlineitem-edit/purchaserequestlineitem-edit.component';
+import { PurchaserequestlineitemCreateComponent } from './feature/purchaserequestlineitem/purchaserequestlineitem-create/purchaserequestlineitem-create.component';
 
 
 @NgModule({
@@ -61,7 +66,11 @@ import { PurchaserequestListComponent } from './feature/purchaserequest/purchase
     PurchaserequestDetailComponent,
     PurchaserequestCreateComponent,
     PurchaserequestEditComponent,
-    PurchaserequestListComponent
+    PurchaserequestListComponent,
+    PurchaserequestlineitemDetailComponent,
+    PurchaserequestlineitemListComponent,
+    PurchaserequestlineitemEditComponent,
+    PurchaserequestlineitemCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +83,8 @@ import { PurchaserequestListComponent } from './feature/purchaserequest/purchase
     VendorService,
     SystemService,
     PurchaserequestService,
+    PurchaserequestlineitemService,
+    SortPipe,
     ProductService
     // LogService
   ],

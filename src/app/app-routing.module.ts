@@ -22,6 +22,11 @@ import {PurchaserequestEditComponent} from './feature/purchaserequest/purchasere
 import {PurchaserequestListComponent} from './feature/purchaserequest/purchaserequest-list/purchaserequest-list.component';
 import {PurchaserequestDetailComponent} from './feature/purchaserequest/purchaserequest-detail/purchaserequest-detail.component';
 import {PurchaserequestCreateComponent} from './feature/purchaserequest/purchaserequest-create/purchaserequest-create.component';
+// purchaserequestlineitem components
+import {PurchaserequestlineitemEditComponent} from './feature/purchaserequestlineitem/purchaserequestlineitem-edit/purchaserequestlineitem-edit.component';
+import {PurchaserequestlineitemListComponent} from './feature/purchaserequestlineitem/purchaserequestlineitem-list/purchaserequestlineitem-list.component';
+import {PurchaserequestlineitemDetailComponent} from './feature/purchaserequestlineitem/purchaserequestlineitem-detail/purchaserequestlineitem-detail.component';
+import {PurchaserequestlineitemCreateComponent} from './feature/purchaserequestlineitem/purchaserequestlineitem-create/purchaserequestlineitem-create.component';
 
 const routes: Routes = [
 	{path: '', redirectTo: '/', pathMatch: 'full'},
@@ -44,6 +49,10 @@ const routes: Routes = [
   {path: 'purchaserequest/edit/:id', component: PurchaserequestEditComponent},
   {path: 'purchaserequest/list', component: PurchaserequestListComponent},
   {path: 'purchaserequest/create', component: PurchaserequestCreateComponent},
+  {path: 'purchaserequestlineitem/detail/:id', component: PurchaserequestlineitemDetailComponent},
+  {path: 'purchaserequestlineitem/edit/:id', component: PurchaserequestlineitemEditComponent},
+  {path: 'purchaserequestlineitem/list', component: PurchaserequestlineitemListComponent},
+  {path: 'purchaserequestlineitem/create', component: PurchaserequestlineitemCreateComponent},
 	{path: '**', component: HomeComponent}
 ];
 
