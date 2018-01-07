@@ -1,3 +1,17 @@
-<p>
-  purchaserequestlineitem-edit works!
-</p>
+<div class ="component-content">
+  <span class ='component-title'>[{{title}}]</span>
+  <a routerLink='/purchaserequestlineitem/list' class="btn btn-primary">back to the list</a>
+  <div class="purchaserequestlineitem-edit" *ngIf='purchaserequestlineitem'>
+    <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
+      {{key}}
+      <select *ngIf="key == 'Vendor';else not_Vendor" [(ngModel)]='purchaserequestlineitem[key]'>
+        <option *ngFor="let vendor of vendors" [ngValue]="vendor">{{vendor.Name}}</option>
+      </select>
+      <ng-template #not_Vendor>
+        <input *ngIf="attributeTypeHash[key] != 'boolean'" [(ngModel)] ="purchaserequestlineitem[key]" type="text">
+        <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="purchaserequestlineitem[key]" type="checkbox" name="true" [checked]='true'>
+      </ng-template>
+    </div>
+    <button (click)="update()" class="btn btn-primary">update</button>
+  </div>
+</div>

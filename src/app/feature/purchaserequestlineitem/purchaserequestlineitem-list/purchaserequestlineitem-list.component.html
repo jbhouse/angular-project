@@ -1,3 +1,40 @@
-<p>
-  purchaserequestlineitem-list works!
-</p>
+<div class ="component-content">
+  <div class =''>
+    <div class ='lefthalf'>
+      <span class ='component-title'>[{{title}}]</span>
+      <span><a routerLink ='/purchaserequestlineitem/create/{{prid}}'><img id ='createnew' width = '20' height = '20' src= '../../../assets/add-new.png' title ="Add New"></a></span>
+    </div>
+
+  <div class='righthalf input-group'>
+    <span class =''>Sort: </span>
+    <select [(ngModel)]= 'selectedSortKey' class ='custom-select text-sm-left'>
+      <option *ngFor='let sortKey of sortKeys' value = '{{sortKey}}'>{{sortKey}}</option>
+    </select>
+    <span>Order:</span>
+      <select [(ngModel)] = 'sortDesc' class ='custom-select text-sm-left'>
+        <option value = 'asc'>Asc</option>
+        <option value='desc'>Desc</option>
+      </select>
+    </div>
+  </div>
+<p *ngIf= '!purchaserequestlineitems'>loading ... </p>
+<table class = "table table-sm" *ngIf='purchaserequestlineitems'>
+
+<th *ngFor='let k of attributeArray'>
+  <tr>
+    <td>{{k}}</td>
+  </tr>
+</th>
+  <!-- <tr *ngFor='let purchaserequestlineitem of purchaserequestlineitems | sort:selectedSortKey:sortDesc'> -->
+    <tr *ngFor='let purchaserequestlineitem of purchaserequestlineitems'>
+    <td *ngFor='let k of attributeArray'>
+      <span *ngIf="k == 'User';else not_User">{{purchaserequestlineitem[k].UserName}}</span>
+      <ng-template #not_User><span *ngIf="k == 'Status';else not_Status">{{purchaserequestlineitem[k].Description}}</span></ng-template>
+      <ng-template #not_Status>{{purchaserequestlineitem[k]}}</ng-template>
+    </td>
+    <td class = 'actions'>
+      <a routerLink = '/purchaserequestlineitem/detail/{{purchaserequestlineitem.Id}}'><img src = '../../../assets/detail.png' title = 'Detail'></a>
+      <a routerLink = '/purchaserequestlineitem/edit/{{purchaserequestlineitem.Id}}'><img src = '../../../assets/edit.png' title = 'Edit'></a>
+    </td>
+  </tr>
+</table>

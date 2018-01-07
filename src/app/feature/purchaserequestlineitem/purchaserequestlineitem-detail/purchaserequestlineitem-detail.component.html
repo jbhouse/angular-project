@@ -1,3 +1,16 @@
-<p>
-  purchaserequestlineitem-detail works!
-</p>
+<div class ="component-content">
+  <div class="purchaserequestlineitem-detail" *ngIf='purchaserequestlineitem'>
+    <span class ='component-title'>[{{title}}]</span>
+    <span *ngIf='purchaserequestlineitem'>{{purchaserequestlineitem.Name}}</span>
+    <a routerLink='/purchaserequestlineitem/edit/{{purchaserequestlineitem.Id}}' class="btn btn-primary">edit</a>
+    <div *ngFor='let key of attributeArray'>
+      <span>{{key}}: {{purchaserequestlineitem[key]}}</span>
+    </div>
+    <div>
+      <span>
+        Product: {{purchaserequestlineitem.Product.Name}}
+      </span>
+    </div>
+    <button (click)="remove()" class="btn btn-danger">remove</button>
+  </div>
+</div>

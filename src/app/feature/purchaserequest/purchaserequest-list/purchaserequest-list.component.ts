@@ -31,7 +31,6 @@ export class PurchaserequestListComponent extends dbClass implements OnInit {
     this.PrSvc.list()
       .subscribe(purchaserequests => {
         this.purchaserequests = purchaserequests;
-        // console.log(this.purchaserequests)
         this.pr = new PurchaseRequest();
         this.populateAttributeArray(this.pr);
         this.selectSpecificAttributes(this.nonAcceptedAttributes);

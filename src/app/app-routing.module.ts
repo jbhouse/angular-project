@@ -51,8 +51,9 @@ const routes: Routes = [
   {path: 'purchaserequest/create', component: PurchaserequestCreateComponent},
   {path: 'purchaserequestlineitem/detail/:id', component: PurchaserequestlineitemDetailComponent},
   {path: 'purchaserequestlineitem/edit/:id', component: PurchaserequestlineitemEditComponent},
+  {path: 'purchaserequestlineitem/listspecific/:id', component: PurchaserequestlineitemListComponent},
   {path: 'purchaserequestlineitem/list', component: PurchaserequestlineitemListComponent},
-  {path: 'purchaserequestlineitem/create', component: PurchaserequestlineitemCreateComponent},
+  {path: 'purchaserequestlineitem/create/:id', component: PurchaserequestlineitemCreateComponent},
 	{path: '**', component: HomeComponent}
 ];
 
