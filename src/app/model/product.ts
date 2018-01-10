@@ -24,8 +24,8 @@ export class Product {
     this.PartNumber = '';
     this.Name = '';
     this.Price = 0;
-    this.Unit = '';
-    this.PhotoPath = '';
+    this.Unit = '....';
+    this.PhotoPath = '...';
   }
 
   static sortableKeys = ['Id','PartNumber','Name','Price','Unit'];

@@ -10,6 +10,7 @@ import {MenuComponent} from './core/menu/menu.component';
 import {HomeComponent} from './home/home.component';
 import {AppComponent} from './app.component';
 
+import {StatusService} from './service/status.service';
 import {UserService} from './service/user.service';
 import {VendorService} from './service/vendor.service';
 import {SystemService} from './service/system.service';
@@ -85,7 +86,8 @@ import { PurchaserequestlineitemCreateComponent } from './feature/purchasereques
     PurchaserequestService,
     PurchaserequestlineitemService,
     SortPipe,
-    ProductService
+    ProductService,
+    StatusService
     // LogService
   ],
   bootstrap: [AppComponent]

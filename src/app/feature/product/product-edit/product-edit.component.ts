@@ -11,7 +11,8 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-product-edit',
-  templateUrl: './product-edit.component.html',
+  // templateUrl: './product-edit.component.html',
+  templateUrl: './../../../edit1.html',
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent extends dbClass implements OnInit {
@@ -21,7 +22,7 @@ export class ProductEditComponent extends dbClass implements OnInit {
   resp: any;
   objname:string = 'product';
   obj: Product;
-  vendors: Vendor[];
+  parent1: Vendor[];
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
   update(){
@@ -41,7 +42,7 @@ export class ProductEditComponent extends dbClass implements OnInit {
 
   ngOnInit() {
     this.VendSvc.list()
-      .subscribe(vendors => this.vendors = vendors);
+      .subscribe(parent1 => this.parent1 = parent1);
 
     this.route.params.subscribe(params => this.id = params['id']);
     this.ProdSvc.get(this.id)

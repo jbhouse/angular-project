@@ -18,13 +18,13 @@ export class VendorEditComponent extends dbClass implements OnInit {
 	title: string = 'vendor edit';
 	id: string;
 	resp: any;
-	vendor: Vendor;
-  	nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpDatedByUser'];
+  objname: string = 'vendor';
+	obj: Vendor;
+  nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpDatedByUser'];
 
 	update(){
-    // this.vendor.UpdatedByUser = this.SysSvc.data.user.id;
-    console.log(this.vendor);
-		this.VendorSvc.update(this.vendor)
+    // this.obj.UpdatedByUser = this.SysSvc.data.user.id;
+		this.VendorSvc.update(this.obj)
 			.subscribe(resp => {
 				this.resp = resp;
 				this.router.navigate(['/vendor/list']);
@@ -39,11 +39,11 @@ export class VendorEditComponent extends dbClass implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => this.id = params['id']);
     this.VendorSvc.get(this.id)
-      .subscribe(vendors => {
-        this.vendor = vendors.length > 0 ? vendors[0] : null;
-        this.populateAttributeArray(this.vendor);
+      .subscribe(objs => {
+        this.obj = objs.length > 0 ? objs[0] : null;
+        this.populateAttributeArray(this.obj);
         this.selectSpecificAttributes(this.nonAcceptedAttributes);
-        this.populateAttributeTypeHash(this.vendor);
+        this.populateAttributeTypeHash(this.obj);
       });
   }
 }

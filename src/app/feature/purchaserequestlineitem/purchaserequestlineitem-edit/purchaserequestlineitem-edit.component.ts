@@ -13,7 +13,8 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-purchaserequestlineitem-edit',
-  templateUrl: './purchaserequestlineitem-edit.component.html',
+  // templateUrl: './purchaserequestlineitem-edit.component.html',
+  templateUrl: './../../../edit.html',
   styleUrls: ['./purchaserequestlineitem-edit.component.css']
 })
 export class PurchaserequestlineitemEditComponent extends dbClass implements OnInit {

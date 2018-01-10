@@ -3,15 +3,17 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 import {SystemService} from '../../../service/system.service';
 import {PurchaserequestService} from '../../../service/purchaserequest.service';
-import {UserService} from '../../../service/user.service';
-// import {StatusService} from '../../../service/status.service';
-import {User} from '../../../model/user';
+// import {UserService} from '../../../service/user.service';
+import {StatusService} from '../../../service/status.service';
+
+import {Status} from '../../../model/status';
+// import {User} from '../../../model/user';
 import {PurchaseRequest} from '../../../model/purchaserequest';
 import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-purchaserequest-edit',
-  templateUrl: './../../../edit.html',
+  templateUrl: './../../../edit1.html',
   // templateUrl: './purchaserequest-edit.component.html',
   styleUrls: ['./purchaserequest-edit.component.css']
 })
@@ -22,8 +24,11 @@ export class PurchaserequestEditComponent extends dbClass implements OnInit {
   resp: any;
   objname:string = 'purchaserequest';
   obj: PurchaseRequest;
-  users: User[];
-  nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
+  // parent1: User[];
+  parent1: Status[];
+  parent1key: string = 'Status';
+  parent1Route:string = 'status';
+  nonAcceptedAttributes = ['Id', 'User', 'DateCreated', 'DateUpdated', 'UpDatedByUser'];
 
   update(){
     // this.obj.UpdatedByUser = this.SysSvc.data.user.id;
@@ -35,14 +40,18 @@ export class PurchaserequestEditComponent extends dbClass implements OnInit {
   }
 
   constructor(private PrSvc: PurchaserequestService,
-              private UserSvc: UserService,
+              // private UserSvc: UserService,
               private SysSvc: SystemService,
+              private StatusSvc: StatusService,
               private router: Router,
               private route: ActivatedRoute) { super() }
 
   ngOnInit() {
-    this.UserSvc.list()
-      .subscribe(users => this.users = users);
+    // this.UserSvc.list()
+    //   .subscribe(parent1 => this.parent1 = parent1);
+
+    // this.StatusSvc.list()
+    //   .subscribe(parent1 => this.parent1 = parent1);
 
     this.route.params.subscribe(params => this.id = params['id']);
     this.PrSvc.get(this.id)
