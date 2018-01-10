@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
+
 import {VendorService} from '../../../service/vendor.service';
+import {SystemService} from '../../../service/system.service';
+
+
 import {Vendor} from '../../../model/vendor';
 import {dbClass} from '../../../dbClass';
 
@@ -15,10 +19,10 @@ export class VendorCreateComponent extends dbClass implements OnInit {
   id: string;
   resp: any;
   vendor: Vendor;
-  nonAcceptedAttributes = ['Id', 'DateCreated', 'Dateupdated', 'UpdatedByUser'];
+  nonAcceptedAttributes = ['Id', 'DateCreated', 'Dateupdated', 'UpDatedByUser'];
 
   create(){
-    console.log(this.vendor);
+    // this.vendor.UpdatedByUser = this.SysSvc.data.user.id;
     this.VendorSvc.create(this.vendor)
       .subscribe(resp => {
         this.resp = resp;
@@ -28,6 +32,7 @@ export class VendorCreateComponent extends dbClass implements OnInit {
 
   constructor(private VendorSvc: VendorService,
               private router: Router,
+              private SysSvc: SystemService,
               private route: ActivatedRoute) { super() }
 
   ngOnInit() {

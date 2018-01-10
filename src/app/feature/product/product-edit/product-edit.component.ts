@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
+
+import {SystemService} from '../../../service/system.service';
 import {ProductService} from '../../../service/product.service';
 import {VendorService} from '../../../service/vendor.service';
+
 import {Product} from '../../../model/product';
 import {Vendor} from '../../../model/vendor';
 import {dbClass} from '../../../dbClass';
@@ -16,12 +19,14 @@ export class ProductEditComponent extends dbClass implements OnInit {
   title: string = 'product edit';
   id: string;
   resp: any;
-  product: Product;
+  objname:string = 'product';
+  obj: Product;
   vendors: Vendor[];
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
   update(){
-    this.ProdSvc.update(this.product)
+    // this.obj.UpdatedByUser = this.SysSvc.data.user.id;
+    this.ProdSvc.update(this.obj)
       .subscribe(resp => {
         this.resp = resp;
         this.router.navigate(['/product/list']);
@@ -30,6 +35,7 @@ export class ProductEditComponent extends dbClass implements OnInit {
 
   constructor(private ProdSvc: ProductService,
               private VendSvc: VendorService,
+              private SysSvc: SystemService,
               private router: Router,
               private route: ActivatedRoute) { super() }
 
@@ -40,10 +46,10 @@ export class ProductEditComponent extends dbClass implements OnInit {
     this.route.params.subscribe(params => this.id = params['id']);
     this.ProdSvc.get(this.id)
       .subscribe(products => {
-        this.product = products.length > 0 ? products[0] : null;
-        this.populateAttributeArray(this.product);
+        this.obj = products.length > 0 ? products[0] : null;
+        this.populateAttributeArray(this.obj);
         this.selectSpecificAttributes(this.nonAcceptedAttributes);
-        this.populateAttributeTypeHash(this.product);
+        this.populateAttributeTypeHash(this.obj);
       });
   }
 

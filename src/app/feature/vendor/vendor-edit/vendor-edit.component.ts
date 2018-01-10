@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
+
 import {VendorService} from '../../../service/vendor.service';
+import {SystemService} from '../../../service/system.service';
+
 import {Vendor} from '../../../model/vendor';
 import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-vendor-edit',
-  templateUrl: './vendor-edit.component.html',
+  // templateUrl: './vendor-edit.component.html',
+  templateUrl: './../../../edit.html',
   styleUrls: ['./vendor-edit.component.css']
 })
 export class VendorEditComponent extends dbClass implements OnInit {
@@ -15,9 +19,11 @@ export class VendorEditComponent extends dbClass implements OnInit {
 	id: string;
 	resp: any;
 	vendor: Vendor;
-  	nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
+  	nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpDatedByUser'];
 
 	update(){
+    // this.vendor.UpdatedByUser = this.SysSvc.data.user.id;
+    console.log(this.vendor);
 		this.VendorSvc.update(this.vendor)
 			.subscribe(resp => {
 				this.resp = resp;
@@ -27,6 +33,7 @@ export class VendorEditComponent extends dbClass implements OnInit {
 
   constructor(private VendorSvc: VendorService,
   		    	  private router: Router,
+              private SysSvc: SystemService,
   			      private route: ActivatedRoute) { super() }
 
   ngOnInit() {

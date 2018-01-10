@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap} from '@angular/router';
+
+import {SystemService} from '../../../service/system.service';
 import {ProductService} from '../../../service/product.service';
 import {VendorService} from '../../../service/vendor.service';
+
 import {Product} from '../../../model/product';
 import {Vendor} from '../../../model/vendor';
 import {dbClass} from '../../../dbClass';
@@ -16,12 +19,14 @@ export class ProductCreateComponent extends dbClass implements OnInit {
   title: string = 'product create';
   id: string;
   resp: any;
-  product: Product;
+  objname: string = 'product';
+  obj: Product;
   vendors: Vendor[];
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
   create(){
-    this.ProdSvc.create(this.product)
+    // this.obj.UpdatedByUser = this.SysSvc.data.user.id;
+    this.ProdSvc.create(this.obj)
       .subscribe(resp => {
         this.resp = resp;
         this.router.navigate(['/product/list']);
@@ -30,16 +35,17 @@ export class ProductCreateComponent extends dbClass implements OnInit {
 
   constructor(private ProdSvc: ProductService,
               private VendSvc: VendorService,
+              private SysSvc: SystemService,
               private router: Router,
               private route: ActivatedRoute) { super() }
 
   ngOnInit() {
     this.VendSvc.list()
       .subscribe(vendors => this.vendors = vendors);
-    this.product = new Product();
-    this.populateAttributeArray(this.product);
+    this.obj = new Product();
+    this.populateAttributeArray(this.obj);
     this.selectSpecificAttributes(this.nonAcceptedAttributes);
-    this.populateAttributeTypeHash(this.product);
+    this.populateAttributeTypeHash(this.obj);
   }
 
 }

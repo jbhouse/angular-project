@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
+
+import {SystemService} from '../../../service/system.service';
 import {PurchaserequestService} from '../../../service/purchaserequest.service';
 import {UserService} from '../../../service/user.service';
 // import {StatusService} from '../../../service/status.service';
@@ -9,7 +11,8 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-purchaserequest-edit',
-  templateUrl: './purchaserequest-edit.component.html',
+  templateUrl: './../../../edit.html',
+  // templateUrl: './purchaserequest-edit.component.html',
   styleUrls: ['./purchaserequest-edit.component.css']
 })
 export class PurchaserequestEditComponent extends dbClass implements OnInit {
@@ -17,12 +20,14 @@ export class PurchaserequestEditComponent extends dbClass implements OnInit {
   title: string = 'purchaserequest edit';
   id: string;
   resp: any;
-  purchaserequest: PurchaseRequest;
+  objname:string = 'purchaserequest';
+  obj: PurchaseRequest;
   users: User[];
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
   update(){
-    this.PrSvc.update(this.purchaserequest)
+    // this.obj.UpdatedByUser = this.SysSvc.data.user.id;
+    this.PrSvc.update(this.obj)
       .subscribe(resp => {
         this.resp = resp;
         this.router.navigate(['/product/list']);
@@ -31,6 +36,7 @@ export class PurchaserequestEditComponent extends dbClass implements OnInit {
 
   constructor(private PrSvc: PurchaserequestService,
               private UserSvc: UserService,
+              private SysSvc: SystemService,
               private router: Router,
               private route: ActivatedRoute) { super() }
 
@@ -41,10 +47,10 @@ export class PurchaserequestEditComponent extends dbClass implements OnInit {
     this.route.params.subscribe(params => this.id = params['id']);
     this.PrSvc.get(this.id)
       .subscribe(prs => {
-        this.purchaserequest = prs.length > 0 ? prs[0] : null;
-        this.populateAttributeArray(this.purchaserequest);
+        this.obj = prs.length > 0 ? prs[0] : null;
+        this.populateAttributeArray(this.obj);
         this.selectSpecificAttributes(this.nonAcceptedAttributes);
-        this.populateAttributeTypeHash(this.purchaserequest);
+        this.populateAttributeTypeHash(this.obj);
       });
   }
 

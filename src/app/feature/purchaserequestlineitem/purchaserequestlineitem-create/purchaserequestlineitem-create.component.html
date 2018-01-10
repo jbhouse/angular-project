@@ -1,15 +1,15 @@
 <div class ="component-content">
   <span class ='component-title'>[{{title}}]</span>
-  <a routerLink='/purchaserequestlineitem/list' class="btn btn-primary">back to the list</a>
-  <div class="usr-create" *ngIf='purchaserequestlineitem'>
+  <a routerLink='/{{objname}}/list' class="btn btn-primary">back to the list</a>
+  <div class="usr-create" *ngIf='obj'>
     <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
       {{key}}
-      <select *ngIf="products && key == 'Product';else not_Product" [(ngModel)]='purchaserequestlineitem[key]'>
+      <select *ngIf="products && key == 'Product';else not_Product" [(ngModel)]='obj[key]'>
         <option *ngFor="let product of products" [ngValue]="product">{{product.Name}}</option>
       </select>
       <ng-template #not_Product>
-        <input *ngIf="attributeTypeHash[key] != 'boolean'" [(ngModel)] ="purchaserequestlineitem[key]" type="text">
-        <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="purchaserequestlineitem[key]" type="checkbox" name="true" [checked]='true'>
+        <input *ngIf="attributeTypeHash[key] != 'boolean'" [(ngModel)] ="obj[key]" type="text">
+        <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="obj[key]" type="checkbox" name="true" [checked]='true'>
       </ng-template>
     </div>
     <button (click)="create()" class="btn btn-primary">create</button>

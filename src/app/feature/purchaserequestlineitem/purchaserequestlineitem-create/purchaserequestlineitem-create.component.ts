@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
+
+import {SystemService} from '../../../service/system.service';
 import {PurchaserequestlineitemService} from '../../../service/purchaserequestlineitem.service';
 import {PurchaseRequestLineItem} from '../../../model/purchaserequestlineitem';
 import {PurchaserequestService} from '../../../service/purchaserequest.service';
+
 import {PurchaseRequest} from '../../../model/purchaserequest';
 import {ProductService} from '../../../service/product.service';
 import {Product} from '../../../model/product';
@@ -20,12 +23,13 @@ export class PurchaserequestlineitemCreateComponent extends dbClass implements O
   resp: any;
   purchaserequest: PurchaseRequest;
   products: Product[];
-  purchaserequestlineitem: PurchaseRequestLineItem;
+  obj: PurchaseRequestLineItem;
+  objname: string = 'purchaserequestlineitem';
   nonAcceptedAttributes = ['Id', 'PurchaseRequest'];
 
   create(){
-    // console.log(this.purchaserequestlineitem.Product);
-    this.PrliSvc.create(this.purchaserequestlineitem)
+    // this.obj.UpdatedByUser = this.SysSvc.data.user.id;
+    this.PrliSvc.create(this.obj)
       .subscribe(resp => {
         this.resp = resp;
         this.router.navigate(['/purchaserequestlineitem/listspecific/'+this.prid]);
@@ -35,6 +39,7 @@ export class PurchaserequestlineitemCreateComponent extends dbClass implements O
   constructor(private PrliSvc: PurchaserequestlineitemService,
               private ProdSvc: ProductService,
               private PrSvc: PurchaserequestService,
+              private SysSvc: SystemService,
               private router: Router,
               private route: ActivatedRoute) { super() }
 
@@ -45,11 +50,11 @@ export class PurchaserequestlineitemCreateComponent extends dbClass implements O
     this.PrSvc.get(this.prid)
       .subscribe(pr => {
         this.purchaserequest = pr.length > 0 ? pr[0] : null
-        this.purchaserequestlineitem = new PurchaseRequestLineItem();
-        this.populateAttributeArray(this.purchaserequestlineitem);
+        this.obj = new PurchaseRequestLineItem();
+        this.populateAttributeArray(this.obj);
         this.selectSpecificAttributes(this.nonAcceptedAttributes);
-        this.populateAttributeTypeHash(this.purchaserequestlineitem);
-        this.purchaserequestlineitem.PurchaseRequest = this.purchaserequest;
+        this.populateAttributeTypeHash(this.obj);
+        this.obj.PurchaseRequest = this.purchaserequest;
     });
   }
 
