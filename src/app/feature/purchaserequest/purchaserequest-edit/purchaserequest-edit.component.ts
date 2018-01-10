@@ -27,7 +27,7 @@ export class PurchaserequestEditComponent extends dbClass implements OnInit {
   // parent1: User[];
   parent1: Status[];
   parent1key: string = 'Status';
-  parent1Route:string = 'status';
+  parent1Route:string = this.objname+='/list';
   nonAcceptedAttributes = ['Id', 'User', 'DateCreated', 'DateUpdated', 'UpDatedByUser'];
 
   update(){

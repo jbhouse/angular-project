@@ -13,8 +13,7 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-purchaserequestlineitem-edit',
-  // templateUrl: './purchaserequestlineitem-edit.component.html',
-  templateUrl: './../../../edit.html',
+  templateUrl: './../../../edit1.html',
   styleUrls: ['./purchaserequestlineitem-edit.component.css']
 })
 export class PurchaserequestlineitemEditComponent extends dbClass implements OnInit {
@@ -22,9 +21,11 @@ export class PurchaserequestlineitemEditComponent extends dbClass implements OnI
   title: string = 'purchaserequest edit';
   id: string;
   resp: any;
-  products: Product[];
   obj: PurchaseRequestLineItem;
   objname: string = 'purchaserequestlineitem';
+  parent1: Product[];
+  parent1key: string = 'Product';
+  parent1Route:string = 'purchaserequestlineitem/listspecific/';
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser', 'PurchaseRequest'];
 
   update(){
@@ -45,7 +46,7 @@ export class PurchaserequestlineitemEditComponent extends dbClass implements OnI
 
   ngOnInit() {
     this.ProdSvc.list()
-      .subscribe(products => this.products = products);
+      .subscribe(products => this.parent1 = products);
     this.route.params.subscribe(params => this.id = params['id']);
     this.PrliSvc.get(this.id)
       .subscribe(prs => {
@@ -53,6 +54,8 @@ export class PurchaserequestlineitemEditComponent extends dbClass implements OnI
         this.populateAttributeArray(this.obj);
         this.selectSpecificAttributes(this.nonAcceptedAttributes);
         this.populateAttributeTypeHash(this.obj);
+        this.transformNullValues(this.obj);
+        this.parent1Route += this.id;
       });
   }
 

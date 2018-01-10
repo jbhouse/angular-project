@@ -51,6 +51,7 @@ export class ProductEditComponent extends dbClass implements OnInit {
         this.populateAttributeArray(this.obj);
         this.selectSpecificAttributes(this.nonAcceptedAttributes);
         this.populateAttributeTypeHash(this.obj);
+        this.transformNullValues(this.obj);
       });
   }
 

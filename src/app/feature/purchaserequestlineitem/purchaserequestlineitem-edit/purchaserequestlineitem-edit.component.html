@@ -1,13 +1,13 @@
 <div class ="component-content">
   <span class ='component-title'>[{{title}}]</span>
-  <a routerLink='/{{objname}}/list' class="btn btn-primary">back to the list</a>
-  <div class="{{objname}}-edit" *ngIf='obj'>
+  <a routerLink='/{{parent1Route}}/list' class="btn btn-primary">back to the list</a>
+  <div class="{{parent1key}}-edit" *ngIf='obj'>
     <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
       {{key}}
-      <select *ngIf="key == 'Vendor';else not_Vendor" [(ngModel)]='obj[key]'>
-        <option *ngFor="let vendor of vendors" [ngValue]="vendor">{{vendor.Name}}</option>
+      <select *ngIf="attributeTypeHash[key] == 'object';else not_Parent1" [(ngModel)]='obj[key]'>
+        <option *ngFor="let parent of parent1" [ngValue]="parent">{{parent.Name}}</option>
       </select>
-      <ng-template #not_Vendor>
+      <ng-template #not_Parent1>
         <input *ngIf="attributeTypeHash[key] != 'boolean'" [(ngModel)] ="obj[key]" type="text">
         <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="obj[key]" type="checkbox" name="true" [checked]='true'>
       </ng-template>

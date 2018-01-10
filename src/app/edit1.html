@@ -1,6 +1,6 @@
 <div class ="component-content">
   <span class ='component-title'>[{{title}}]</span>
-  <a routerLink='/{{parent1Route}}/list' class="btn btn-primary">back to the list</a>
+  <a routerLink='/{{parent1Route}}' class="btn btn-primary">back to the list</a>
   <div class="{{parent1key}}-edit" *ngIf='obj'>
     <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
       {{key}}
