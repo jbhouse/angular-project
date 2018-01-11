@@ -14,7 +14,7 @@ export class PurchaserequestlineitemDetailComponent extends dbClass implements O
   title: string = 'Purchase Request Line Item Detail';
   id:string;
   resp:any;
-  nonAcceptedAttributes = ['Product','PurchaseRequest'];
+  nonAcceptedAttributes = ['Product', 'Id', 'UpdatedByUser', 'PurchaseRequest'];
   purchaserequestlineitem: PurchaseRequestLineItem;
 
   constructor(private PrliSvc: PurchaserequestlineitemService,

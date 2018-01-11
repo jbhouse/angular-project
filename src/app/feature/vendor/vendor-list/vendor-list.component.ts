@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+
 import {VendorService} from '../../../service/vendor.service';
+import {SortPipe} from '../../../util/sortpipe';
+// import {SystemService} from '../../../service/system.service';
+
 import {Vendor} from '../../../model/vendor';
 import {dbClass} from '../../../dbClass';
 

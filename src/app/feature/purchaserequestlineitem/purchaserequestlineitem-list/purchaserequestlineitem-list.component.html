@@ -28,9 +28,9 @@
   <!-- <tr *ngFor='let purchaserequestlineitem of purchaserequestlineitems | sort:selectedSortKey:sortDesc'> -->
     <tr *ngFor='let purchaserequestlineitem of purchaserequestlineitems'>
     <td *ngFor='let k of attributeArray'>
-      <span *ngIf="k == 'User';else not_User">{{purchaserequestlineitem[k].UserName}}</span>
-      <ng-template #not_User><span *ngIf="k == 'Status';else not_Status">{{purchaserequestlineitem[k].Description}}</span></ng-template>
-      <ng-template #not_Status>{{purchaserequestlineitem[k]}}</ng-template>
+      <span *ngIf="k == 'Product';else not_Product">{{purchaserequestlineitem[k].Name}}</span>
+      <ng-template #not_Product><span *ngIf="k == 'PurchaseRequest';else not_PurchaseRequest">{{purchaserequestlineitem[k].Description}}</span></ng-template>
+      <ng-template #not_PurchaseRequest>{{purchaserequestlineitem[k]}}</ng-template>
     </td>
     <td class = 'actions'>
       <a routerLink = '/purchaserequestlineitem/detail/{{purchaserequestlineitem.Id}}'><img src = '../../../assets/detail.png' title = 'Detail'></a>

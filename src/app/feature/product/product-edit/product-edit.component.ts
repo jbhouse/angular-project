@@ -23,6 +23,7 @@ export class ProductEditComponent extends dbClass implements OnInit {
   objname:string = 'product';
   obj: Product;
   parent1: Vendor[];
+  parent1Route:string = 'product/list';
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
   update(){
