@@ -27,7 +27,7 @@ export class ProductEditComponent extends dbClass implements OnInit {
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
   update(){
-    // this.obj.UpdatedByUser = this.SysSvc.data.user.id;
+    this.obj.UpdatedByUser = this.SysSvc.data.user.instance.id;
     this.ProdSvc.update(this.obj)
       .subscribe(resp => {
         this.resp = resp;

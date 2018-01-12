@@ -22,7 +22,7 @@ export class VendorCreateComponent extends dbClass implements OnInit {
   nonAcceptedAttributes = ['Id', 'DateCreated', 'Dateupdated', 'UpDatedByUser'];
 
   create(){
-    // this.vendor.UpdatedByUser = this.SysSvc.data.user.id;
+    this.vendor.UpdatedByUser = this.SysSvc.data.user.instance.id;
     this.VendorSvc.create(this.vendor)
       .subscribe(resp => {
         this.resp = resp;

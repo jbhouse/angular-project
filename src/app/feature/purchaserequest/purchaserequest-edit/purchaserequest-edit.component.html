@@ -5,7 +5,7 @@
     <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
       {{key}}
       <select *ngIf="attributeTypeHash[key] == 'object';else not_Parent1" [(ngModel)]='obj[key]'>
-        <option *ngFor="let parent of parent1" [ngValue]="parent">{{parent.Name}}</option>
+        <option *ngFor="let parent of parent1" [ngValue]="parent">{{parent.Description}}</option>
       </select>
       <ng-template #not_Parent1>
         <input *ngIf="attributeTypeHash[key] != 'boolean'" [(ngModel)] ="obj[key]" type="text">

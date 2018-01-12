@@ -14,7 +14,6 @@ import {round} from '../../../util/rounding';
 
 @Component({
   selector: 'app-purchaserequestlineitem-edit',
-  // templateUrl: './../../../edit1.html',
   templateUrl: './purchaserequestlineitem-edit.component.html',
   styleUrls: ['./purchaserequestlineitem-edit.component.css']
 })
@@ -35,7 +34,7 @@ export class PurchaserequestlineitemEditComponent extends dbClass implements OnI
   }
 
   update(){
-    // this.obj.UpdatedByUser = this.SysSvc.data.user.id;
+    this.obj.UpdatedByUser = this.SysSvc.data.user.instance.id;
     this.PrliSvc.update(this.obj)
       .subscribe(resp => {
         this.resp = resp;

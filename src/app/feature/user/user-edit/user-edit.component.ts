@@ -7,7 +7,6 @@ import {dbClass} from '../../../dbClass';
 @Component({
   selector: 'app-user-edit',
   templateUrl: './../../../edit.html',
-  // templateUrl: './user-edit.component.html',
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent extends dbClass implements OnInit {
@@ -15,7 +14,7 @@ export class UserEditComponent extends dbClass implements OnInit {
 	title: string = 'user edit';
 	id: string;
 	resp: any;
-   objname: string = 'user';
+  objname: string = 'user';
 	obj: User;
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 

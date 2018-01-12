@@ -25,7 +25,7 @@ export class ProductCreateComponent extends dbClass implements OnInit {
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
   create(){
-    // this.obj.UpdatedByUser = this.SysSvc.data.user.id;
+    this.obj.UpdatedByUser = this.SysSvc.data.user.instance.id;
     this.ProdSvc.create(this.obj)
       .subscribe(resp => {
         this.resp = resp;

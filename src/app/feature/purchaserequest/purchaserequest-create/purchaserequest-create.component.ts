@@ -22,7 +22,7 @@ export class PurchaserequestCreateComponent extends dbClass implements OnInit {
   nonAcceptedAttributes = ['Id', 'Status', 'User', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
   create(){
-    // this.obj.UpdatedByUser = this.SysSvc.data.user.id;
+    this.obj.UpdatedByUser = this.SysSvc.data.user.instance.id;
     this.PrSvc.create(this.obj)
       .subscribe(resp => {
         this.resp = resp;

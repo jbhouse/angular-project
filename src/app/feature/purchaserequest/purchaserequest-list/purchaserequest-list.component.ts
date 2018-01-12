@@ -24,8 +24,8 @@ export class PurchaserequestListComponent extends dbClass implements OnInit {
 
   constructor(private PrSvc: PurchaserequestService,
               private SysSvc: SystemService
-          // private LogSvc: LogService
-          ) { super() }
+            // private LogSvc: LogService
+              ) { super() }
 
   ngOnInit() {
     this.PrSvc.list()
