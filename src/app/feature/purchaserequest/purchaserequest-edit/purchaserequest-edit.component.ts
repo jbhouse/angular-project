@@ -3,18 +3,15 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 import {SystemService} from '../../../service/system.service';
 import {PurchaserequestService} from '../../../service/purchaserequest.service';
-// import {UserService} from '../../../service/user.service';
 import {StatusService} from '../../../service/status.service';
 
 import {Status} from '../../../model/status';
-// import {User} from '../../../model/user';
 import {PurchaseRequest} from '../../../model/purchaserequest';
 import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-purchaserequest-edit',
-  templateUrl: './../../../edit1.html',
-  // templateUrl: './purchaserequest-edit.component.html',
+  templateUrl: './purchaserequest-edit.component.html',
   styleUrls: ['./purchaserequest-edit.component.css']
 })
 export class PurchaserequestEditComponent extends dbClass implements OnInit {
@@ -24,7 +21,6 @@ export class PurchaserequestEditComponent extends dbClass implements OnInit {
   resp: any;
   objname:string = 'purchaserequest';
   obj: PurchaseRequest;
-  // parent1: User[];
   parent1: Status[];
   parent1key: string = 'Status';
   parent1Route:string = this.objname+='/list';
@@ -47,9 +43,6 @@ export class PurchaserequestEditComponent extends dbClass implements OnInit {
               private route: ActivatedRoute) { super() }
 
   ngOnInit() {
-    // this.UserSvc.list()
-    //   .subscribe(parent1 => this.parent1 = parent1);
-
     // this.StatusSvc.list()
     //   .subscribe(parent1 => this.parent1 = parent1);
 

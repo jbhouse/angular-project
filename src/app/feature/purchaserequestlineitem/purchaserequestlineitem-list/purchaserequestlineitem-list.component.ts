@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {PurchaserequestlineitemService} from '../../../service/purchaserequestlineitem.service';
 import {SystemService} from '../../../service/system.service';
-// import {LogService} from '../../../service/user.service';
 import {PurchaseRequestLineItem} from '../../../model/purchaserequestlineitem';
 import {dbClass} from '../../../dbClass';
 import {SortPipe} from '../../../util/sortpipe'
+import {round} from '../../../util/rounding';
 
 @Component({
   selector: 'app-purchaserequestlineitem-list',
@@ -37,11 +37,10 @@ export class PurchaserequestlineitemListComponent extends dbClass implements OnI
       .subscribe(purchaserequestlineitems => {
         this.purchaserequestlineitems = purchaserequestlineitems;
         for (var i = 0; i < this.purchaserequestlineitems.length; ++i) {
-          // ignore this error. typescript knows nothing of my elite javascript abilities
-          this.purchaserequestlineitems[i].Price = parseFloat(this.purchaserequestlineitems[i].Quantity * this.purchaserequestlineitems[i].Product.Price).toFixed(2);
+          this.purchaserequestlineitems[i].Total = round((this.purchaserequestlineitems[i].Quantity * this.purchaserequestlineitems[i].Product.Price),2);
         }
         this.prli = new PurchaseRequestLineItem();
-        this.prli.Price = 0;
+        this.prli.Total = 0;
         this.populateAttributeArray(this.prli);
         this.selectSpecificAttributes(this.nonAcceptedAttributes);
         this.populateAttributeTypeHash(this.prli);

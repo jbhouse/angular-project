@@ -14,12 +14,12 @@ export class PurchaseRequestLineItem {
 
   static sortableKeys = ['Id','Product','PurchaseRequest','IsActive','UpdatedByUser'];
 
- Id: number;
- Product: Product;
- PurchaseRequest: PurchaseRequest;
- Quantity: number;
- IsActive: boolean;
- UpdatedByUser: number;
- Price:number;
+   Id: number;
+   Product: Product;
+   PurchaseRequest: PurchaseRequest;
+   Quantity: number;
+   IsActive: boolean;
+   UpdatedByUser: number;
+   Total:number;
 
 }

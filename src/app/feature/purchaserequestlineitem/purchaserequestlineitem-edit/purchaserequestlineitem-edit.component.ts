@@ -10,10 +10,12 @@ import {PurchaseRequestLineItem} from '../../../model/purchaserequestlineitem';
 import {PurchaseRequest} from '../../../model/purchaserequest';
 import {Product} from '../../../model/product';
 import {dbClass} from '../../../dbClass';
+import {round} from '../../../util/rounding';
 
 @Component({
   selector: 'app-purchaserequestlineitem-edit',
-  templateUrl: './../../../edit1.html',
+  // templateUrl: './../../../edit1.html',
+  templateUrl: './purchaserequestlineitem-edit.component.html',
   styleUrls: ['./purchaserequestlineitem-edit.component.css']
 })
 export class PurchaserequestlineitemEditComponent extends dbClass implements OnInit {
@@ -51,7 +53,7 @@ export class PurchaserequestlineitemEditComponent extends dbClass implements OnI
     this.PrliSvc.get(this.id)
       .subscribe(prs => {
         this.obj = prs.length > 0 ? prs[0] : null;
-        this.obj.Price = parseFloat(this.obj.Quantity * this.obj.Product.Price).toFixed(2);
+        this.obj.Total = round((this.obj.Quantity * this.obj.Product.Price),2);
         this.populateAttributeArray(this.obj);
         this.selectSpecificAttributes(this.nonAcceptedAttributes);
         this.populateAttributeTypeHash(this.obj);

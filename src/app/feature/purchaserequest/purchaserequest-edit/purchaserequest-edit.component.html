@@ -1,10 +1,10 @@
 <div class ="component-content">
   <span class ='component-title'>[{{title}}]</span>
-  <a routerLink='/purchaserequest/list' class="btn btn-primary">back to the list</a>
-  <div class="purchaserequest-edit" *ngIf='obj'>
+  <a routerLink='/{{parent1Route}}' class="btn btn-primary">back to the list</a>
+  <div class="{{parent1key}}-edit" *ngIf='obj'>
     <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
       {{key}}
-      <select *ngIf="key == 'Status';else not_Parent1" [(ngModel)]='obj[key]'>
+      <select *ngIf="attributeTypeHash[key] == 'object';else not_Parent1" [(ngModel)]='obj[key]'>
         <option *ngFor="let parent of parent1" [ngValue]="parent">{{parent.Name}}</option>
       </select>
       <ng-template #not_Parent1>

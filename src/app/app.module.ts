@@ -86,7 +86,6 @@ import { PurchaserequestlineitemCreateComponent } from './feature/purchasereques
     SystemService,
     PurchaserequestService,
     PurchaserequestlineitemService,
-    SortPipe,
     ProductService,
     StatusService
     // LogService
