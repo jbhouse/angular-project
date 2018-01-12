@@ -34,6 +34,7 @@ export class PurchaserequestlineitemDetailComponent extends dbClass implements O
     this.PrliSvc.get(this.id)
       .subscribe(purchaserequestlineitems => {
         this.purchaserequestlineitem = purchaserequestlineitems.length > 0 ? purchaserequestlineitems[0] : null;
+        this.purchaserequestlineitem.Price = parseFloat(this.purchaserequestlineitem.Quantity * this.purchaserequestlineitem.Product.Price).toFixed(2);
         this.populateAttributeArray(this.purchaserequestlineitem);
         this.selectSpecificAttributes(this.nonAcceptedAttributes);
         this.populateAttributeTypeHash(this.purchaserequestlineitem);

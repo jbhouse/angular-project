@@ -20,5 +20,6 @@ export class PurchaseRequestLineItem {
  Quantity: number;
  IsActive: boolean;
  UpdatedByUser: number;
+ Price:number;
 
 }

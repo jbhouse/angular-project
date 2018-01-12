@@ -36,7 +36,12 @@ export class PurchaserequestlineitemListComponent extends dbClass implements OnI
     this.PrliSvc.list()
       .subscribe(purchaserequestlineitems => {
         this.purchaserequestlineitems = purchaserequestlineitems;
+        for (var i = 0; i < this.purchaserequestlineitems.length; ++i) {
+          // ignore this error. typescript knows nothing of my elite javascript abilities
+          this.purchaserequestlineitems[i].Price = parseFloat(this.purchaserequestlineitems[i].Quantity * this.purchaserequestlineitems[i].Product.Price).toFixed(2);
+        }
         this.prli = new PurchaseRequestLineItem();
+        this.prli.Price = 0;
         this.populateAttributeArray(this.prli);
         this.selectSpecificAttributes(this.nonAcceptedAttributes);
         this.populateAttributeTypeHash(this.prli);

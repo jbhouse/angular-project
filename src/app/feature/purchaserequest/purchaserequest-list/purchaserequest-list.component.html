@@ -25,7 +25,6 @@
     <td>{{k}}</td>
   </tr>
 </th>
-  <!-- <tr *ngFor='let purchaserequest of purchaserequests | sort:selectedSortKey:sortDesc'> -->
     <tr *ngFor='let purchaserequest of purchaserequests'>
     <td *ngFor='let k of attributeArray'>
       <span *ngIf="k == 'User';else not_User">{{purchaserequest[k].UserName}}</span>

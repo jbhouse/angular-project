@@ -49,6 +49,7 @@ import { PurchaserequestlineitemCreateComponent } from './feature/purchasereques
 @NgModule({
   declarations: [
     AppComponent,
+    SortPipe,
     MenuComponent,
     HomeComponent,
     UserListComponent,

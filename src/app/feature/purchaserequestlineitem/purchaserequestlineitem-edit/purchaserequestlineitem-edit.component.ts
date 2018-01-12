@@ -51,6 +51,7 @@ export class PurchaserequestlineitemEditComponent extends dbClass implements OnI
     this.PrliSvc.get(this.id)
       .subscribe(prs => {
         this.obj = prs.length > 0 ? prs[0] : null;
+        this.obj.Price = parseFloat(this.obj.Quantity * this.obj.Product.Price).toFixed(2);
         this.populateAttributeArray(this.obj);
         this.selectSpecificAttributes(this.nonAcceptedAttributes);
         this.populateAttributeTypeHash(this.obj);

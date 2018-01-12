@@ -4,7 +4,7 @@ import {SystemService} from '../../../service/system.service';
 // import {LogService} from '../../../service/user.service';
 import {Product} from '../../../model/product';
 import {dbClass} from '../../../dbClass';
-import {SortPipe} from '../../../util/sortpipe'
+// import {SortPipe} from '../../../util/sortpipe'
 
 @Component({
   selector: 'app-product-list',
