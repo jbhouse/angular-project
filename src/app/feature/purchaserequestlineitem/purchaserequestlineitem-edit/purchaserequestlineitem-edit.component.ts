@@ -28,7 +28,11 @@ export class PurchaserequestlineitemEditComponent extends dbClass implements OnI
   parent1: Product[];
   parent1key: string = 'Product';
   parent1Route:string = 'purchaserequestlineitem/listspecific/';
-  nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser', 'PurchaseRequest'];
+  nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser', 'PurchaseRequest', 'Total'];
+
+  recalculateTotal() {
+    this.obj.Total = round((this.obj.Quantity * this.obj.Product.Price),2);
+  }
 
   update(){
     // this.obj.UpdatedByUser = this.SysSvc.data.user.id;

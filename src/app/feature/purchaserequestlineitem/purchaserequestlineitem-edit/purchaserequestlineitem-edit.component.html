@@ -4,14 +4,15 @@
   <div class="{{parent1key}}-edit" *ngIf='obj'>
     <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
       {{key}}
-      <select *ngIf="attributeTypeHash[key] == 'object';else not_Parent1" [(ngModel)]='obj[key]'>
+      <select *ngIf="attributeTypeHash[key] == 'object';else not_Parent1" [(ngModel)]='obj[key]' (change)="recalculateTotal()">
         <option *ngFor="let parent of parent1" [ngValue]="parent">{{parent.Name}}</option>
       </select>
       <ng-template #not_Parent1>
-        <input *ngIf="attributeTypeHash[key] != 'boolean'" [(ngModel)] ="obj[key]" type="text">
+        <input *ngIf="attributeTypeHash[key] != 'boolean'" [(ngModel)] ="obj[key]" type="text" (keyup)="recalculateTotal()">
         <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="obj[key]" type="checkbox" name="true" [checked]='true'>
       </ng-template>
     </div>
+    <div style="margin-left: 5%" class="form-group row">Total: {{obj.Total}}<br/></div>
     <button (click)="update()" class="btn btn-primary">update</button>
   </div>
 </div>
