@@ -2,7 +2,7 @@
   <div class =''>
     <div class ='lefthalf'>
       <span class ='component-title'>[{{title}}]</span>
-      <span><a routerLink ='/user/create'><img id ='createnew' width = '20' height = '20' src= '../../../assets/add-new.png' title ="Add New"></a></span>
+      <span><a routerLink ={{createLink}}><img id ='createnew' width = '20' height = '20' src= '../../../assets/add-new.png' title ="Add New"></a></span>
     </div>
 
   <div class='righthalf input-group'>
@@ -17,20 +17,20 @@
       </select>
     </div>
   </div>
-<p *ngIf= '!users'>loading ... </p>
-<table class = "table table-sm" *ngIf='users'>
+<p *ngIf= '!objs'>loading ... </p>
+<table class = "table table-sm" *ngIf='objs'>
 
 <th *ngFor='let k of attributeArray'>
   <tr>
     <td>{{k}}</td>
   </tr>
 </th>
-  <!-- <tr *ngFor='let user of users | sort:selectedSortKey:sortDesc'> -->
-  <tr *ngFor='let user of users'>
-  <td *ngFor='let k of attributeArray'>{{user[k]}}</td>
+  <tr *ngFor='let obj of objs | sort:selectedSortKey:sortDesc'>
+  <tr *ngFor='let obj of objs'>
+  <td *ngFor='let k of attributeArray'>{{obj[k]}}</td>
   <td class = 'actions'>
-    <a routerLink = '/user/detail/{{user.Id}}'><img src = '../../../assets/detail.png' title = 'Detail'></a>
-    <a routerLink = '/user/edit/{{user.Id}}'><img src = '../../../assets/edit.png' title = 'Edit'></a>
+    <a routerLink = '/obj/detail/{{obj.Id}}'><img src = '../../../assets/detail.png' title = 'Detail'></a>
+    <a routerLink = '/obj/edit/{{obj.Id}}'><img src = '../../../assets/edit.png' title = 'Edit'></a>
   </td>
 </tr>
 </table>

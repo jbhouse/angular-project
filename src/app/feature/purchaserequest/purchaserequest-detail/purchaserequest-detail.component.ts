@@ -15,7 +15,7 @@ export class PurchaserequestDetailComponent extends dbClass implements OnInit {
   title: string = 'Product Detail';
   id:string;
   resp:any;
-  nonAcceptedAttributes = ['User','Status','UpDatedByUser','Id','DateCreated','DateUpdated'];
+  nonAcceptedAttributes = ['User','Status','UpDatedByUser','UpdatedByUser','Id','DateCreated','DateUpdated'];
   purchaserequest: PurchaseRequest;
 
   constructor(private PrSvc: PurchaserequestService,

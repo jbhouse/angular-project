@@ -27,7 +27,7 @@ export class PurchaserequestEditComponent extends dbClass implements OnInit {
   nonAcceptedAttributes = ['Id', 'User', 'DateCreated', 'DateUpdated', 'UpDatedByUser'];
 
   update(){
-    this.obj.UpdatedByUser = this.SysSvc.data.user.instance.id;
+    this.obj.UpdatedByUser = this.SysSvc.data.user.instance.Id;
     this.PrSvc.update(this.obj)
       .subscribe(resp => {
         this.resp = resp;

@@ -2,7 +2,7 @@
   <div class =''>
     <div class ='lefthalf'>
       <span class ='component-title'>[{{title}}]</span>
-      <span><a routerLink ='/product/create'><img id ='createnew' width = '20' height = '20' src= '../../../assets/add-new.png' title ="Add New"></a></span>
+      <span><a routerLink ={{urlLink}}><img id ='createnew' width = '20' height = '20' src= '../../../assets/add-new.png' title ="Add New"></a></span>
     </div>
 
   <div class='righthalf input-group'>
@@ -17,23 +17,23 @@
       </select>
     </div>
   </div>
-<p *ngIf= '!products'>loading ... </p>
-<table class = "table table-sm" *ngIf='products'>
+<p *ngIf= '!objs'>loading ... </p>
+<table class = "table table-sm" *ngIf='objs'>
 
 <th *ngFor='let k of attributeArray'>
   <tr>
     <td>{{k}}</td>
   </tr>
 </th>
-    <tr *ngFor='let product of products | sort:selectedSortKey:sortDesc'>
-    <tr *ngFor='let product of products'>
+    <tr *ngFor='let obj of objs | sort:selectedSortKey:sortDesc'>
+    <tr *ngFor='let obj of objs'>
     <td *ngFor='let k of attributeArray'>
-      <span *ngIf="k == 'Vendor';else not_Vendor">{{product[k].Name}}</span>
-      <ng-template #not_Vendor>{{product[k]}}</ng-template>
+      <span *ngIf="attributeTypeHash[k] == 'object';else not_Object">{{obj[k].Name}}</span>
+      <ng-template #not_Object>{{obj[k]}}</ng-template>
     </td>
     <td class = 'actions'>
-      <a routerLink = '/product/detail/{{product.Id}}'><img src = '../../../assets/detail.png' title = 'Detail'></a>
-      <a routerLink = '/product/edit/{{product.Id}}'><img src = '../../../assets/edit.png' title = 'Edit'></a>
+      <a routerLink = '/obj/detail/{{obj.Id}}'><img src = '../../../assets/detail.png' title = 'Detail'></a>
+      <a routerLink = '/obj/edit/{{obj.Id}}'><img src = '../../../assets/edit.png' title = 'Edit'></a>
     </td>
   </tr>
 </table>

@@ -22,6 +22,7 @@ export class UserLoginComponent implements OnInit {
           this.user = users[0];
           this.SysSvc.data.user.instance = this.user;
           this.SysSvc.data.user.loggedIn = true;
+          // console.log(this.SysSvc.data.user.instance)
           console.log("SysSvc:", this.SysSvc.debug);
           this.SysSvc.data.displayMenu = true;
           this.router.navigateByUrl('/user/list');

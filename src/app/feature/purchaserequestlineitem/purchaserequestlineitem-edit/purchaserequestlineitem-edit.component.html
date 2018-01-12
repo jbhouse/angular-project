@@ -1,7 +1,7 @@
 <div class ="component-content">
   <span class ='component-title'>[{{title}}]</span>
-  <a routerLink='/{{parent1Route}}/list' class="btn btn-primary">back to the list</a>
-  <div class="{{parent1key}}-edit" *ngIf='obj'>
+  <a routerLink='/purchaserequestlineitem/listspecific/{{prid}}' class="btn btn-primary">back to the list</a>
+  <div class="purchaserequestlineitem-edit" *ngIf='obj'>
     <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
       {{key}}
       <select *ngIf="attributeTypeHash[key] == 'object';else not_Parent1" [(ngModel)]='obj[key]' (change)="recalculateTotal()">

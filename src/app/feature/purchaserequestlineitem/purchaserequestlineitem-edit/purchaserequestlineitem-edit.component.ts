@@ -22,11 +22,10 @@ export class PurchaserequestlineitemEditComponent extends dbClass implements OnI
   title: string = 'purchaserequest edit';
   id: string;
   resp: any;
+  prid:number;
   obj: PurchaseRequestLineItem;
   objname: string = 'purchaserequestlineitem';
   parent1: Product[];
-  parent1key: string = 'Product';
-  parent1Route:string = 'purchaserequestlineitem/listspecific/';
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser', 'PurchaseRequest', 'Total'];
 
   recalculateTotal() {
@@ -34,11 +33,11 @@ export class PurchaserequestlineitemEditComponent extends dbClass implements OnI
   }
 
   update(){
-    this.obj.UpdatedByUser = this.SysSvc.data.user.instance.id;
+    this.obj.UpdatedByUser = this.SysSvc.data.user.instance.Id;
     this.PrliSvc.update(this.obj)
       .subscribe(resp => {
         this.resp = resp;
-        this.router.navigate(['/product/list']);
+        this.router.navigate(['purchaserequestlineitem/listspecific/'+this.prid]);
       });
   }
 
@@ -61,7 +60,7 @@ export class PurchaserequestlineitemEditComponent extends dbClass implements OnI
         this.selectSpecificAttributes(this.nonAcceptedAttributes);
         this.populateAttributeTypeHash(this.obj);
         this.transformNullValues(this.obj);
-        this.parent1Route += this.id;
+        this.prid = this.obj.PurchaseRequest.Id;
       });
   }
 

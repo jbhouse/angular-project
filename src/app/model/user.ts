@@ -29,4 +29,5 @@ export class User {
   UpdatedByUser:number;
   DateCreated:Date;
   DateUpdated:Date;
+  Name:string;
 }

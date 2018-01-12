@@ -12,7 +12,7 @@ export class Status {
   constructor() {
 
     this.Id = 1;
-    this.Description = "Description";
+    this.Description = "New";
   }
 
 }

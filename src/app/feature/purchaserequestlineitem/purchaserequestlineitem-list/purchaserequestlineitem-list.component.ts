@@ -33,18 +33,29 @@ export class PurchaserequestlineitemListComponent extends dbClass implements OnI
     // sending the purchase request id on so that our line item that will be
     // added can be added to the correct purchase rquest
     this.route.params.subscribe(params => this.prid = params['id']);
-    this.PrliSvc.list()
-      .subscribe(purchaserequestlineitems => {
-        this.purchaserequestlineitems = purchaserequestlineitems;
-        for (var i = 0; i < this.purchaserequestlineitems.length; ++i) {
-          this.purchaserequestlineitems[i].Total = round((this.purchaserequestlineitems[i].Quantity * this.purchaserequestlineitems[i].Product.Price),2);
-        }
-        this.prli = new PurchaseRequestLineItem();
-        this.prli.Total = 0;
-        this.populateAttributeArray(this.prli);
-        this.selectSpecificAttributes(this.nonAcceptedAttributes);
-        this.populateAttributeTypeHash(this.prli);
-      });
+    if(this.prid){
+      this.PrliSvc.listspecific(this.prid)
+        .subscribe(purchaserequestlineitems => {
+          this.purchaserequestlineitems = purchaserequestlineitems;
+          for (var i = 0; i < this.purchaserequestlineitems.length; ++i) {
+            this.purchaserequestlineitems[i].Total = round((this.purchaserequestlineitems[i].Quantity * this.purchaserequestlineitems[i].Product.Price),2);
+          }
+        });
+    }
+    // else {
+    //   this.PrliSvc.list()
+    //     .subscribe(purchaserequestlineitems => {
+    //       this.purchaserequestlineitems = purchaserequestlineitems;
+    //       for (var i = 0; i < this.purchaserequestlineitems.length; ++i) {
+    //         this.purchaserequestlineitems[i].Total = round((this.purchaserequestlineitems[i].Quantity * this.purchaserequestlineitems[i].Product.Price),2);
+    //       }
+    //     });
+    // }
+      this.prli = new PurchaseRequestLineItem();
+      this.prli.Total = 0;
+      this.populateAttributeArray(this.prli);
+      this.selectSpecificAttributes(this.nonAcceptedAttributes);
+      this.populateAttributeTypeHash(this.prli);
   }
 
 }

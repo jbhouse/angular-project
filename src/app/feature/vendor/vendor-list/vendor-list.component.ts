@@ -9,16 +9,18 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-vendor-list',
-  templateUrl: './vendor-list.component.html',
+  templateUrl: './../../../list.html',
+  // templateUrl: './vendor-list.component.html',
   styleUrls: ['./vendor-list.component.css']
 })
 export class VendorListComponent extends dbClass implements OnInit {
 
+  objName = 'vendor'
   title: string = 'Vendor List';
   selectedSortKey: string = 'Id';
   sortDesc: string = 'asc';
   sortKeys: string[] = Vendor.sortableKeys;
-  vendors: Vendor[];
+  objs: Vendor[];
   vendor:Vendor;
   nonAcceptedAttributes = ['DateCreated','Dateupdated','UpdatedByUser']
 
@@ -33,8 +35,8 @@ export class VendorListComponent extends dbClass implements OnInit {
     this.populateAttributeArray(this.vendor);
     this.selectSpecificAttributes(this.nonAcceptedAttributes);
     this.VendorSvc.list()
-      .subscribe(vendors => {
-        this.vendors = vendors;
+      .subscribe(objs => {
+        this.objs = objs;
       });
   }
 

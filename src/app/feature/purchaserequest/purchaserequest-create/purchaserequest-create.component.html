@@ -1,16 +1,16 @@
 <div class ="component-content">
   <span class ='component-title'>[{{title}}]</span>
   <a routerLink='/purchaserequest/list' class="btn btn-primary">back to the list</a>
-  <div class="usr-create" *ngIf='purchaserequest'>
+  <div class="usr-create" *ngIf='obj'>
     <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
       <span *ngIf="key == 'DateNeeded';else not_this_element">
         <label>DateNeeded</label>
-        <input [(ngModel)] ="purchaserequest[key]" type="date"/>
+        <input [(ngModel)] ="obj[key]" type="date"/>
       </span>
       <ng-template #not_this_element>
         {{key}}
-        <input *ngIf="attributeTypeHash[key] != 'boolean'" [(ngModel)] ="purchaserequest[key]" type="text">
-        <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="purchaserequest[key]" type="checkbox" name="true" [checked]='true'>
+        <input *ngIf="attributeTypeHash[key] != 'boolean'" [(ngModel)] ="obj[key]" type="text">
+        <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="obj[key]" type="checkbox" name="true" [checked]='true'>
       </ng-template>
     </div>
     <button (click)="create()" class="btn btn-primary">create</button>

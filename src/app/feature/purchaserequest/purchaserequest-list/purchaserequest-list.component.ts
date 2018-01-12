@@ -10,15 +10,17 @@ import {SortPipe} from '../../../util/sortpipe'
 @Component({
   selector: 'app-purchaserequest-list',
   templateUrl: './purchaserequest-list.component.html',
+  // templateUrl: './../../../list2.html',
   styleUrls: ['./purchaserequest-list.component.css']
 })
 export class PurchaserequestListComponent extends dbClass implements OnInit {
 
+  objName = 'purchaserequest'
   title: string = 'Purchase Request List';
   selectedSortKey: string = 'Id';
   sortDesc: string = 'asc';
   sortKeys: string[] = PurchaseRequest.sortableKeys;
-  purchaserequests: PurchaseRequest[];
+  objs: PurchaseRequest[];
   pr: PurchaseRequest;
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
@@ -29,12 +31,15 @@ export class PurchaserequestListComponent extends dbClass implements OnInit {
 
   ngOnInit() {
     this.PrSvc.list()
-      .subscribe(purchaserequests => {
-        this.purchaserequests = purchaserequests;
+      .subscribe(objs => {
+        this.objs = objs;
         this.pr = new PurchaseRequest();
         this.populateAttributeArray(this.pr);
         this.selectSpecificAttributes(this.nonAcceptedAttributes);
         this.populateAttributeTypeHash(this.pr);
+        for (var i = 0; i < this.objs.length; ++i) {
+          this.objs[i].User.Name = this.objs[i].User.FirstName + this.objs[i].User.LastName;
+        }
       });
   }
 

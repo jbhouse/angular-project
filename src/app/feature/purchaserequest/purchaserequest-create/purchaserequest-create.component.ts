@@ -4,6 +4,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {SystemService} from '../../../service/system.service';
 import {PurchaserequestService} from '../../../service/purchaserequest.service';
 import {PurchaseRequest} from '../../../model/purchaserequest';
+import {Status} from '../../../model/status';
 import {dbClass} from '../../../dbClass';
 
 @Component({
@@ -22,7 +23,8 @@ export class PurchaserequestCreateComponent extends dbClass implements OnInit {
   nonAcceptedAttributes = ['Id', 'Status', 'User', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
   create(){
-    this.obj.UpdatedByUser = this.SysSvc.data.user.instance.id;
+    this.obj.UpdatedByUser = this.SysSvc.data.user.instance.Id;
+    this.obj.Status = new Status();
     this.PrSvc.create(this.obj)
       .subscribe(resp => {
         this.resp = resp;
