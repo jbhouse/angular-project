@@ -10,20 +10,22 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-vendor-create',
-  templateUrl: './vendor-create.component.html',
+  // templateUrl: './vendor-create.component.html',
+  templateUrl: './../../../vendor-manipulate.html',
   styleUrls: ['./vendor-create.component.css']
 })
 export class VendorCreateComponent extends dbClass implements OnInit {
 
+  action:string='create';
   title: string = 'vendor create';
   id: string;
   resp: any;
-  vendor: Vendor;
-  nonAcceptedAttributes = ['Id', 'DateCreated', 'Dateupdated', 'UpDatedByUser'];
+  obj: Vendor;
+  nonAcceptedAttributes = ['Id', 'DateCreated', 'Dateupdated', 'UpdatedByUser', 'UpDatedByUser'];
 
-  create(){
-    this.vendor.UpdatedByUser = this.SysSvc.data.user.instance.Id;
-    this.VendorSvc.create(this.vendor)
+  change(){
+    this.obj.UpdatedByUser = this.SysSvc.data.user.instance.Id;
+    this.VendorSvc.create(this.obj)
       .subscribe(resp => {
         this.resp = resp;
         this.router.navigate(['/vendor/list']);
@@ -36,10 +38,10 @@ export class VendorCreateComponent extends dbClass implements OnInit {
               private route: ActivatedRoute) { super() }
 
   ngOnInit() {
-    this.vendor = new Vendor();
-    this.populateAttributeArray(this.vendor);
+    this.obj = new Vendor();
+    this.populateAttributeArray(this.obj);
     this.selectSpecificAttributes(this.nonAcceptedAttributes);
-    this.populateAttributeTypeHash(this.vendor);
+    this.populateAttributeTypeHash(this.obj);
   }
 
 }

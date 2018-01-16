@@ -11,23 +11,26 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-purchaserequest-edit',
-  templateUrl: './purchaserequest-edit.component.html',
+  // templateUrl: './purchaserequest-edit.component.html',
+  templateUrl: './../../../purchaserequest-manipulate.html',
   styleUrls: ['./purchaserequest-edit.component.css']
 })
+
 export class PurchaserequestEditComponent extends dbClass implements OnInit {
 
+  action:string='update';
   title: string = 'purchaserequest edit';
   id: string;
   resp: any;
   objname:string = 'purchaserequest';
   obj: PurchaseRequest;
   parent1: Status[];
-  parent1key: string = 'Status';
-  parent1Route:string = this.objname+='/list';
-  nonAcceptedAttributes = ['Id', 'User', 'DateCreated', 'DateUpdated', 'UpDatedByUser'];
 
-  update(){
+  nonAcceptedAttributes = ['Id', 'User', 'DateCreated', 'DateUpdated', 'UpDatedByUser', 'Status'];
+
+  change(){
     this.obj.UpdatedByUser = this.SysSvc.data.user.instance.Id;
+    console.log(this.obj)
     this.PrSvc.update(this.obj)
       .subscribe(resp => {
         this.resp = resp;
@@ -44,6 +47,7 @@ export class PurchaserequestEditComponent extends dbClass implements OnInit {
   ngOnInit() {
     this.StatusSvc.list()
       .subscribe(parent1 => this.parent1 = parent1);
+      console.log(this.parent1)
 
     this.route.params.subscribe(params => this.id = params['id']);
     this.PrSvc.get(this.id)

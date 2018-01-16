@@ -1,4 +1,4 @@
-<div class ="component-content">
+<!-- <div class ="component-content">
   <span class ='component-title'>[{{title}}]</span>
   <a routerLink='/{{objname}}/list' class="btn btn-primary">back to the list</a>
   <div class="{{objname}}-create" *ngIf='obj'>
@@ -13,5 +13,23 @@
       </ng-template>
     </div>
     <button (click)="create()" class="btn btn-primary">create</button>
+  </div>
+</div> -->
+
+<div class ="component-content">
+  <span class ='component-title'>[{{title}}]</span>
+  <a routerLink='/{{objname}}/list' class="btn btn-primary">back to the list</a>
+  <div class="{{objname}}-edit" *ngIf='obj'>
+    <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
+      {{key}}
+      <select *ngIf="attributeTypeHash[key] == 'object';else not_Object" [(ngModel)]='obj[key]'>
+        <option *ngFor="let vendor of vendors" [ngValue]="vendor">{{vendor.Name}}</option>
+      </select>
+      <ng-template #not_Object>
+        <input *ngIf="attributeTypeHash[key] != 'boolean'" [(ngModel)] ="obj[key]" type="text">
+        <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="obj[key]" type="checkbox" name="true" [checked]='true'>
+      </ng-template>
+    </div>
+    <button (click)="change()" class="btn btn-primary">update</button>
   </div>
 </div>

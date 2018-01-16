@@ -9,11 +9,13 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-vendor-edit',
-  templateUrl: './../../../edit.html',
+  // templateUrl: './../../../edit.html',
+  templateUrl: './../../../vendor-manipulate.html',
   styleUrls: ['./vendor-edit.component.css']
 })
 export class VendorEditComponent extends dbClass implements OnInit {
 
+  action:string='update';
 	title: string = 'vendor edit';
 	id: string;
 	resp: any;
@@ -21,7 +23,7 @@ export class VendorEditComponent extends dbClass implements OnInit {
 	obj: Vendor;
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpDatedByUser'];
 
-	update(){
+	change(){
     this.obj.UpdatedByUser = this.SysSvc.data.user.instance.Id;
 		this.VendorSvc.update(this.obj)
 			.subscribe(resp => {

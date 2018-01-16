@@ -11,7 +11,8 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-product-create',
-  templateUrl: './product-create.component.html',
+  templateUrl: './../../../product-manipulate.html',
+  // templateUrl: './product-create.component.html',
   styleUrls: ['./product-create.component.css']
 })
 export class ProductCreateComponent extends dbClass implements OnInit {
@@ -24,7 +25,7 @@ export class ProductCreateComponent extends dbClass implements OnInit {
   vendors: Vendor[];
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
-  create(){
+  change(){
     this.obj.UpdatedByUser = this.SysSvc.data.user.instance.Id;
     this.ProdSvc.create(this.obj)
       .subscribe(resp => {

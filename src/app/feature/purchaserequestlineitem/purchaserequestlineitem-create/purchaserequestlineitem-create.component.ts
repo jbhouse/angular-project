@@ -28,6 +28,7 @@ export class PurchaserequestlineitemCreateComponent extends dbClass implements O
   nonAcceptedAttributes = ['Id', 'PurchaseRequest'];
 
   create(){
+    console.log(this.SysSvc)
     this.obj.UpdatedByUser = this.SysSvc.data.user.instance.Id;
     this.PrliSvc.create(this.obj)
       .subscribe(resp => {

@@ -7,6 +7,6 @@
       <input *ngIf="attributeTypeHash[key] == 'string'" [(ngModel)] ="user[key]" type="text">
       <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="user[key]" type="checkbox" name="true" [checked]='true'>
     </div>
-		<button (click)="update()" class="btn btn-primary">update</button>
+		<button (click)="change()" class="btn btn-primary">update</button>
 	</div>
 </div>

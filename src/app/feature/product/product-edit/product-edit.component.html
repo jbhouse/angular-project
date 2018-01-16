@@ -4,14 +4,14 @@
   <div class="{{objname}}-edit" *ngIf='obj'>
     <div style="margin-left: 5%" *ngFor='let key of attributeArray' class="form-group row">
       {{key}}
-      <select *ngIf="key == 'Vendor';else not_Vendor" [(ngModel)]='obj[key]'>
+      <select *ngIf="attributeTypeHash[key] == 'object';else not_Object" [(ngModel)]='obj[key]'>
         <option *ngFor="let vendor of vendors" [ngValue]="vendor">{{vendor.Name}}</option>
       </select>
-      <ng-template #not_Vendor>
+      <ng-template #not_Object>
         <input *ngIf="attributeTypeHash[key] != 'boolean'" [(ngModel)] ="obj[key]" type="text">
         <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="obj[key]" type="checkbox" name="true" [checked]='true'>
       </ng-template>
     </div>
-    <button (click)="update()" class="btn btn-primary">update</button>
+    <button (click)="change()" class="btn btn-primary">update</button>
   </div>
 </div>

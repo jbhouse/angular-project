@@ -1,17 +1,22 @@
 <div style="margin-left: 5%" class ="component-content">
   <span class ='component-title'>[{{title}}]</span>
-  <a routerLink='/{{parent1Route}}' class="btn btn-primary">back to the list</a>
-  <div class="{{parent1key}}-edit" *ngIf='obj'>
-    <select [(ngModel)]='parent1'>
+  <a routerLink='/purchaserequest/list' class="btn btn-primary">back to the list</a>
+  <div class="usr-create" *ngIf='obj'>
+    Status
+    <select [(ngModel)]='parent'>
       <option *ngFor="let parent of parent1" [ngValue]="parent">{{parent.Description}}</option>
     </select>
     <div *ngFor='let key of attributeArray' class="form-group row">
-      {{key}}
-      <ng-template #not_Object>
+      <span *ngIf="key == 'DateNeeded';else not_this_element">
+        <label>DateNeeded</label>
+        <input [(ngModel)] ="obj[key]" type="date"/>
+      </span>
+      <ng-template #not_this_element>
+        {{key}}
         <input *ngIf="attributeTypeHash[key] != 'boolean'" [(ngModel)] ="obj[key]" type="text">
         <input *ngIf="attributeTypeHash[key] == 'boolean'" [(ngModel)] ="obj[key]" type="checkbox" name="true" [checked]='true'>
       </ng-template>
     </div>
-    <button (click)="update()" class="btn btn-primary">update</button>
+    <button (click)="change()" class="btn btn-primary">{{action}}</button>
   </div>
 </div>

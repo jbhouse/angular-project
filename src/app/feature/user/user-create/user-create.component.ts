@@ -6,7 +6,8 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-user-create',
-  templateUrl: './user-create.component.html',
+  // templateUrl: './user-create.component.html',
+  templateUrl: './../../../user-manipulate.html',
   styleUrls: ['./user-create.component.css']
 })
 export class UserCreateComponent extends dbClass implements OnInit {
@@ -14,11 +15,11 @@ export class UserCreateComponent extends dbClass implements OnInit {
   title: string = 'user create';
   id: string;
   resp: any;
-  user: User;
+  obj: User;
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
-  create(){
-    this.UserSvc.create(this.user)
+  change(){
+    this.UserSvc.create(this.obj)
       .subscribe(resp => {
         this.resp = resp;
         this.router.navigate(['/user/list']);
@@ -30,10 +31,10 @@ export class UserCreateComponent extends dbClass implements OnInit {
               private route: ActivatedRoute) { super() }
 
   ngOnInit() {
-    this.user = new User();
-    this.populateAttributeArray(this.user);
+    this.obj = new User();
+    this.populateAttributeArray(this.obj);
     this.selectSpecificAttributes(this.nonAcceptedAttributes);
-    this.populateAttributeTypeHash(this.user);
+    this.populateAttributeTypeHash(this.obj);
   }
 
 }
