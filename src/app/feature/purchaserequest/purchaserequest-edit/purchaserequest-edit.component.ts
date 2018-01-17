@@ -11,7 +11,6 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-purchaserequest-edit',
-  // templateUrl: './purchaserequest-edit.component.html',
   templateUrl: './../../../purchaserequest-manipulate.html',
   styleUrls: ['./purchaserequest-edit.component.css']
 })

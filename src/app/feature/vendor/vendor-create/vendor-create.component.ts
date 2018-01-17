@@ -4,20 +4,19 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {VendorService} from '../../../service/vendor.service';
 import {SystemService} from '../../../service/system.service';
 
-
 import {Vendor} from '../../../model/vendor';
 import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-vendor-create',
-  // templateUrl: './vendor-create.component.html',
-  templateUrl: './../../../vendor-manipulate.html',
+  templateUrl: './../../../manipulate1.html',
   styleUrls: ['./vendor-create.component.css']
 })
 export class VendorCreateComponent extends dbClass implements OnInit {
 
   action:string='create';
   title: string = 'vendor create';
+  routerlink:string = '/vendor/list';
   id: string;
   resp: any;
   obj: Vendor;

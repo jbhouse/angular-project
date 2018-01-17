@@ -10,7 +10,6 @@ import {dbClass} from '../../../dbClass';
 @Component({
   selector: 'app-vendor-list',
   templateUrl: './../../../list.html',
-  // templateUrl: './vendor-list.component.html',
   styleUrls: ['./vendor-list.component.css']
 })
 export class VendorListComponent extends dbClass implements OnInit {
@@ -27,7 +26,6 @@ export class VendorListComponent extends dbClass implements OnInit {
 
   constructor(private VendorSvc: VendorService
           // private SysSvc: SystemService,
-          // private LogSvc: LogService
           ) { super() }
 
   ngOnInit() {

@@ -6,13 +6,14 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-user-edit',
-  // templateUrl: './../../../edit.html',
-  templateUrl: './../../../user-manipulate.html',
+  templateUrl: './../../../manipulate1.html',
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent extends dbClass implements OnInit {
 
 	title: string = 'user edit';
+  routerlink:string = '/user/list';
+  action:string='edit';
 	id: string;
 	resp: any;
   objname: string = 'user';

@@ -6,8 +6,7 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-user-create',
-  // templateUrl: './user-create.component.html',
-  templateUrl: './../../../user-manipulate.html',
+  templateUrl: './../../../manipulate1.html',
   styleUrls: ['./user-create.component.css']
 })
 export class UserCreateComponent extends dbClass implements OnInit {
@@ -16,9 +15,12 @@ export class UserCreateComponent extends dbClass implements OnInit {
   id: string;
   resp: any;
   obj: User;
+  action:string='create';
+  routerlink:string = '/user/list';
   nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
   change(){
+    console.log(this.obj)
     this.UserSvc.create(this.obj)
       .subscribe(resp => {
         this.resp = resp;

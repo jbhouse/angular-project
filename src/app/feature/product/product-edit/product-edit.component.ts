@@ -12,7 +12,6 @@ import {dbClass} from '../../../dbClass';
 @Component({
   selector: 'app-product-edit',
   templateUrl: './../../../product-manipulate.html',
-  // templateUrl: './product-edit.component.html',
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent extends dbClass implements OnInit {

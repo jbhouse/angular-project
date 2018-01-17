@@ -12,7 +12,6 @@ import {dbClass} from '../../../dbClass';
 @Component({
   selector: 'app-product-create',
   templateUrl: './../../../product-manipulate.html',
-  // templateUrl: './product-create.component.html',
   styleUrls: ['./product-create.component.css']
 })
 export class ProductCreateComponent extends dbClass implements OnInit {

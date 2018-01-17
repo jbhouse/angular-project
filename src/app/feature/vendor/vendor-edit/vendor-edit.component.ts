@@ -9,14 +9,14 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-vendor-edit',
-  // templateUrl: './../../../edit.html',
-  templateUrl: './../../../vendor-manipulate.html',
+  templateUrl: './../../../manipulate1.html',
   styleUrls: ['./vendor-edit.component.css']
 })
 export class VendorEditComponent extends dbClass implements OnInit {
 
   action:string='update';
 	title: string = 'vendor edit';
+  routerlink:string = '/vendor/list';
 	id: string;
 	resp: any;
   objname: string = 'vendor';

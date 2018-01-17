@@ -11,7 +11,6 @@ import {SortPipe} from '../../../util/sortpipe'
 @Component({
   selector: 'app-purchaserequest-list',
   templateUrl: './purchaserequest-list.component.html',
-  // templateUrl: './../../../list2.html',
   styleUrls: ['./purchaserequest-list.component.css']
 })
 export class PurchaserequestListComponent extends dbClass implements OnInit {
