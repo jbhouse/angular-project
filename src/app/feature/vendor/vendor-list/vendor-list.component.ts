@@ -20,7 +20,7 @@ export class VendorListComponent extends dbClass implements OnInit {
   sortDesc: string = 'asc';
   sortKeys: string[] = Vendor.sortableKeys;
   objs: Vendor[];
-  vendor:Vendor;
+  obj:Vendor;
   nonAcceptedAttributes = ['DateCreated','Dateupdated','UpdatedByUser']
 
 
@@ -29,9 +29,10 @@ export class VendorListComponent extends dbClass implements OnInit {
           ) { super() }
 
   ngOnInit() {
-    this.vendor = new Vendor();
-    this.populateAttributeArray(this.vendor);
+    this.obj = new Vendor();
+    this.populateAttributeArray(this.obj);
     this.selectSpecificAttributes(this.nonAcceptedAttributes);
+    this.populateAttributeTypeHash(this.obj);
     this.VendorSvc.list()
       .subscribe(objs => {
         this.objs = objs;

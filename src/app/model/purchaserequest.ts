@@ -5,7 +5,7 @@ export class PurchaseRequest {
 
   constructor(){
     this.Id;
-    // this.Status = new Status();
+    this.Status = new Status();
     this.User = new User();
     this.Description = '';
     this.DateNeeded = 0;

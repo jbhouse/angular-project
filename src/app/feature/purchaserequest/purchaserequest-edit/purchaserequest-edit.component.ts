@@ -25,7 +25,7 @@ export class PurchaserequestEditComponent extends dbClass implements OnInit {
   obj: PurchaseRequest;
   parent1: Status[];
 
-  nonAcceptedAttributes = ['Id', 'User', 'DateCreated', 'DateUpdated', 'UpDatedByUser', 'Status'];
+  nonAcceptedAttributes = ['Id', 'User', 'DateCreated', 'DateUpdated', 'UpdatedByUser', 'UpDatedByUser', 'Status'];
 
   change(){
     this.obj.UpdatedByUser = this.SysSvc.data.user.instance.Id;

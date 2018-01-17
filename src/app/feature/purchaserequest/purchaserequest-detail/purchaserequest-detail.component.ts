@@ -7,7 +7,7 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-purchaserequest-detail',
-  templateUrl: './purchaserequest-detail.component.html',
+  templateUrl: './../../../detail.html',
   styleUrls: ['./purchaserequest-detail.component.css']
 })
 export class PurchaserequestDetailComponent extends dbClass implements OnInit {
@@ -15,15 +15,16 @@ export class PurchaserequestDetailComponent extends dbClass implements OnInit {
   title: string = 'Product Detail';
   id:string;
   resp:any;
+  editLink:string;
   nonAcceptedAttributes = ['User','Status','UpDatedByUser','UpdatedByUser','Id','DateCreated','DateUpdated'];
-  purchaserequest: PurchaseRequest;
+  obj: PurchaseRequest;
 
   constructor(private PrSvc: PurchaserequestService,
           private router: Router,
           private route: ActivatedRoute) { super() }
 
   remove() {
-    this.PrSvc.delete(this.purchaserequest.Id)
+    this.PrSvc.delete(this.obj.Id)
       .subscribe(resp => {
         this.resp = resp;
         this.router.navigate(['/purchaserequest/list']);
@@ -32,12 +33,13 @@ export class PurchaserequestDetailComponent extends dbClass implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => this.id = params['id']);
+    this.editLink = '/vendor/edit/'+this.id;
     this.PrSvc.get(this.id)
-      .subscribe(purchaserequests => {
-        this.purchaserequest = purchaserequests.length > 0 ? purchaserequests[0] : null;
-        this.populateAttributeArray(this.purchaserequest);
+      .subscribe(objs => {
+        this.obj = objs.length > 0 ? objs[0] : null;
+        this.populateAttributeArray(this.obj);
         this.selectSpecificAttributes(this.nonAcceptedAttributes);
-        this.populateAttributeTypeHash(this.purchaserequest);
+        this.populateAttributeTypeHash(this.obj);
       });
   }
 

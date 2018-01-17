@@ -1,5 +1,5 @@
 <div class ="component-content">
-  <div class="product-detail" *ngIf='product'>
+  <div *ngIf='product'>
     <span class ='component-title'>[{{title}}]</span>
     <span *ngIf='product'>{{product.Name}}</span>
     <a routerLink='/product/edit/{{product.Id}}' class="btn btn-primary">edit</a>

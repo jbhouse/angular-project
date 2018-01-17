@@ -25,12 +25,19 @@
     <td>{{k}}</td>
   </tr>
 </th>
-  <tr *ngFor='let obj of objs | sort:selectedSortKey:sortDesc'>
-  <tr *ngFor='let obj of objs'>
-  <td *ngFor='let k of attributeArray'>{{obj[k]}}</td>
-  <td class = 'actions'>
-    <a routerLink = '/{{objName}}/detail/{{obj.Id}}'><img src = '../../../assets/detail.png' title = 'Detail'></a>
-    <a routerLink = '/{{objName}}/edit/{{obj.Id}}'><img src = '../../../assets/edit.png' title = 'Edit'></a>
-  </td>
-</tr>
+    <tr *ngFor='let obj of objs | sort:selectedSortKey:sortDesc'>
+    <tr id="purchaserequest{{obj.Id}}" *ngFor='let obj of objs'>
+    <td *ngFor='let k of attributeArray'>
+      <span *ngIf="attributeTypeHash[k] == 'object';else not_Object1">
+        <span *ngIf="k=='User'||k=='Vendor'||k=='Product'">{{obj[k].Name}}</span>
+        <span *ngIf="k=='Status'">{{obj[k].Description}}</span>
+      </span>
+      <ng-template #not_Object1>{{obj[k]}}</ng-template>
+    </td>
+    <td class = 'actions'>
+      <a routerLink = '/{{objName}}/detail/{{obj.Id}}'><img src = '../../../assets/detail.png' title = 'Detail'></a>
+      <a routerLink = '/{{objName}}/edit/{{obj.Id}}'><img src = '../../../assets/edit.png' title = 'Edit'></a>
+      <a *ngIf="objName == 'purchaserequest'" routerLink = '/purchaserequestlineitem/listspecific/{{obj.Id}}'><img src = '../../../assets/list.png' title = 'List Items'></a>
+    </td>
+  </tr>
 </table>

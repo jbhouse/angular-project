@@ -9,19 +9,20 @@ import {round} from '../../../util/rounding';
 
 @Component({
   selector: 'app-purchaserequestlineitem-list',
-  templateUrl: './purchaserequestlineitem-list.component.html',
+  templateUrl: './../../../list.html',
   styleUrls: ['./purchaserequestlineitem-list.component.css']
 })
 export class PurchaserequestlineitemListComponent extends dbClass implements OnInit {
 
+  objName = 'purchaserequestlineitem';
   prid: number;
   title: string = 'Purchase Request Line Item List';
   selectedSortKey: string = 'Id';
   sortDesc: string = 'asc';
   sortKeys: string[] = PurchaseRequestLineItem.sortableKeys;
-  purchaserequestlineitems: PurchaseRequestLineItem[];
+  objs: PurchaseRequestLineItem[];
   prli: PurchaseRequestLineItem;
-  nonAcceptedAttributes = ['Id', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
+  nonAcceptedAttributes = ['Id', 'IsActive', 'PurchaseRequest', 'DateCreated', 'DateUpdated', 'UpdatedByUser'];
 
   constructor(private PrliSvc: PurchaserequestlineitemService,
               private SysSvc: SystemService,
@@ -35,10 +36,10 @@ export class PurchaserequestlineitemListComponent extends dbClass implements OnI
     this.route.params.subscribe(params => this.prid = params['id']);
     if(this.prid){
       this.PrliSvc.listspecific(this.prid)
-        .subscribe(purchaserequestlineitems => {
-          this.purchaserequestlineitems = purchaserequestlineitems;
-          for (var i = 0; i < this.purchaserequestlineitems.length; ++i) {
-            this.purchaserequestlineitems[i].Total = round((this.purchaserequestlineitems[i].Quantity * this.purchaserequestlineitems[i].Product.Price),2);
+        .subscribe(objs => {
+          this.objs = objs;
+          for (var i = 0; i < this.objs.length; ++i) {
+            this.objs[i].Total = round((this.objs[i].Quantity * this.objs[i].Product.Price),2);
           }
         });
     }

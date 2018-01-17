@@ -14,6 +14,10 @@ export class StatusService {
     return this.http.get(url+"List") as Observable<Status[]>;
   }
 
+  get(id): Observable<Status[]> {
+    return this.http.get(url+id) as Observable<Status[]>;
+  }
+
   constructor(private http: HttpClient) { }
 
 }

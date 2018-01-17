@@ -39,4 +39,5 @@ export class Product {
   Unit: string;
   PhotoPath: string;
   UpdatedByUser:number;
+  Identifier:string;
 }

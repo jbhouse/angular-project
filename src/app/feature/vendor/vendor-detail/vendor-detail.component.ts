@@ -6,7 +6,7 @@ import {dbClass} from '../../../dbClass';
 
 @Component({
   selector: 'app-vendor-detail',
-  templateUrl: './vendor-detail.component.html',
+  templateUrl: './../../../detail.html',
   styleUrls: ['./vendor-detail.component.css']
 })
 export class VendorDetailComponent extends dbClass implements OnInit {
@@ -14,12 +14,13 @@ export class VendorDetailComponent extends dbClass implements OnInit {
 	title: string = 'Vendor detail';
 	id: string;
 	resp: any;
-	vendor: Vendor;
+	obj: Vendor;
 	myVendor: Vendor;
+  editLink:string;
 	nonAcceptedAttributes = ['Id','UpDatedByUser'];
 
 	remove() {
-		this.VendorSvc.delete(this.vendor.Id)
+		this.VendorSvc.delete(this.obj.Id)
 			.subscribe(resp => {
 				this.resp = resp;
 				console.log('vendor-detail remove', this.resp);
@@ -33,12 +34,13 @@ export class VendorDetailComponent extends dbClass implements OnInit {
 
   ngOnInit() {
   	this.route.params.subscribe(params => this.id = params['id']);
+    this.editLink = '/vendor/edit/'+this.id;
   	this.VendorSvc.get(this.id)
-  		.subscribe(vendors => { 
-  			this.vendor = vendors.length > 0 ? vendors[0] : null;
-	        this.populateAttributeArray(this.vendor);
+  		.subscribe(vendors => {
+  			this.obj = vendors.length > 0 ? vendors[0] : null;
+	        this.populateAttributeArray(this.obj);
 	        this.selectSpecificAttributes(this.nonAcceptedAttributes);
-	        this.populateAttributeTypeHash(this.vendor);
+	        this.populateAttributeTypeHash(this.obj);
   		});
   }
 
